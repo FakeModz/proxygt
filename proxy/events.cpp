@@ -197,22 +197,7 @@ bool events::out::generictext(std::string packet) {
             return true;
             }
             
-       // }else if (find_command(chat, "dicehack")) {
-       // 	    if (dicemod == false)
-       //     {
-        //        dicemod = true;
-       //         gt::send_log("`9Dice Hack`` is now `2on");
-         //   }
-        //    else
-         //   {
-        //        gt::send_log("`9Dice Hack`` is now `4off");
-       //         dicemod = false;
-       //     }
-       //     return true;
-      //  }
-      //  } 
-     //   return false;
-   // }
+    }
 
     if (packet.find("game_version|") != -1) {
         rtvar var = rtvar::parse(packet);
@@ -354,29 +339,7 @@ bool events::in::variantlist(gameupdatepacket_t* packet) {
             }
         }            
         
-     //   if (dicemod == true)
-      //   {
-      //      if (content.find("add_label_with_icon|big|`wEdit Dice Block``|left|456|") != -1)
-       //       {
-       //         int x = std::stoi(content.substr(content.find("embed_data|tilex|") + 17, content.length() - content.find("embed_data|tilex|") - 1));
-         //       int y = std::stoi(content.substr(content.find("embed_data|tiley|") + 17, content.length() - content.find("embed_data|tiley|") - 1));
-          //      if (content.find("add_checkbox|checkbox_public|Usable by public|0") != -1)
-         //       {
-           //         gt::send_log("`4 (X:" + to_string(x) + " Y:" + to_string(y) + ")`9 Dice is `2Public");
-          //          g_server->send(false, "action|dialog_return\ndialog_name|boombox_edit\ntilex|" + to_string(x) + "|\ntiley|" + to_string(y) + "|\ncheckbox_public|1\ncheckbox_silence|1");
-         //           return true;
 
-         //       }
-          //      else
-         //       {
-           //         gt::send_log("`4 (X:" + to_string(x) + " Y:" + to_string(y) + ")`9 Dice is `4Not Public");
-          //          g_server->send(false, "action|dialog_return\ndialog_name|boombox_edit\ntilex|" + to_string(x) + "|\ntiley|" + to_string(y) + "|\ncheckbox_public|0\ncheckbox_silence|1");
-        //            return true;
-
-           //     }
-        //        return true;
-       //     }
-    //    }
             //hide unneeded ui when resolving
             //for the /uid command
             if (gt::resolving_uid2 && (content.find("friend_all|Show offline") != -1 || content.find("Social Portal") != -1) ||
