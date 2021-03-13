@@ -235,10 +235,10 @@ bool events::out::generictext(std::string packet) {
             return true;
         } else if (find_command(chat, "phelp")) {
             gt::send_log(
-                "/tp [name] (teleports to a player in the world), /ghost (toggles ghost, you wont move for others when its enabled), /uid "
-                "[name] (resolves name to uid), /flag [id] (sets flag to item id), /name [name] (sets name to name), /banall, /kickall, /tradeall"
-                "/warp [world name] (warping world without SSUP), /skin [Id] (change skin colours), /wrenchmode (for wrench pull, kick, pull, ban, trade)"
-                "/ft (fast trash), /fd (fast drop), /setcountry (bug), /wrenchset (for set wrenchmode :pull,kick,ban,trade");
+                "`2/tp [name] (teleports to a player in the world), /ghost (toggles ghost, you wont move for others when its enabled), /uid "
+                "`2[name] (resolves name to uid), /flag [id] (sets flag to item id), /name [name] (sets name to name), /banall, /kickall, /tradeall"
+                "`2/warp [world name] (warping world without SSUP), /skin [Id] (change skin colours), /wrenchmode (for wrench pull, kick, pull, ban, trade)"
+                "`2/ft (fast trash), /fd (fast drop), /setcountry (bug), /wrenchset (for set wrenchmode :pull,kick,ban,trade)");
             return true;
         } 
         return false;
