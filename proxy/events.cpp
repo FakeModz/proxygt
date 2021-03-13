@@ -121,19 +121,6 @@ bool events::out::generictext(std::string packet) {
         }        
         else if (find_command(chat, "ws ")) {
             mode = chat.substr(10);
-            std::string paket;
-            paket =
-            "\nadd_label_with_icon|big|Wrenchset Command|left|32|"
-            "\nadd_spacer|small"
-            "\nadd_textbox|`9/ws `2pull (for pull)|left|2480|"
-            "\nadd_textbox|`9/ws `2kick (for kick)|left|2480|"
-            "\nadd_textbox|`9/ws `2ban (for worldban)|left|2480|"
-            "\nadd_textbox|`9/ws `2trade (for trade)|left|2480|"
-                "\nadd_quick_exit|"
-                "\nend_dialog|end|Cancel|Okay|";
-            variantlist_t liste{ "OnDialogRequest" };
-            liste[1] = paket;
-            g_server->send(true, liste);
             gt::send_log("Wrench mode set to " + mode);
             return true;        
         }
@@ -145,8 +132,6 @@ bool events::out::generictext(std::string packet) {
                 gt::send_log("Wrench mode is off.");
             return true;
         }
-        
-
         else if (find_command(chat, "uid ")) {
             std::string name = chat.substr(5);
             gt::send_log("resolving uid for " + name);
@@ -261,25 +246,25 @@ bool events::out::generictext(std::string packet) {
            // return true;
             std::string paket;
             paket =
-            "\nadd_label_with_icon|big|Android Proxy Gazette|left|5016|"
+            "\nadd_label_with_icon|big|Android Proxy Gazette|left|32|"
                 "\nadd_spacer|small"
-                "\nadd_textbox|`9/phelp `b(shows commands)|left|2480|"
-                "\nadd_textbox|`9/tp `b(teleport to player)|left|2480|"
-                "\nadd_textbox|`9/ghost `b(toggles ghost, you wont move for others when its enabled)|left|2480|"
-                "\nadd_textbox|`9/uid `b(resolves name to uid)|left|2480|"
-                "\nadd_textbox|`9/name `b(Change Name Visual)|left|2480|"
-                "\nadd_textbox|`9/flag [Id]`b(sets flag to item id Like Guild Flag) |left|2480|"
-                "\nadd_textbox|`9/setcountry `b(Change Country (still bug))|left|2480|"
-                "\nadd_textbox|`9/warp [world name]`b(Warping world without SSUP)|left|2480|"
-                "\nadd_textbox|`9/ft `b(Fast Trash)|left|2480|"
-                "\nadd_textbox|`9/fd `b(Fast Drop)|left|2480|"
-                "\nadd_textbox|`9/skin [Id] `b(sets your skin)|left|2480|"
-                "\nadd_textbox|`9/pullall `b(Only for Owner/Admin)|left|2480|"
-                "\nadd_textbox|`9/banall `b(Only for Owner/Admin)|left|2480|"
-                "\nadd_textbox|`9/killall `b(Only for Owner/Admin)|left|2480|"
-                "\nadd_textbox|`9/tradeall `b(Trade All People in World)|left|2480|"
-                "\nadd_textbox|`9/wm `b(Wrench Mode. do /ws for check)|left|2480|"
-                "\nadd_textbox|`9/ws `b(Wrenchset for set Wrench mode. Example (pull,kick,ban,trade)|left|2480|"
+                "\nadd_textbox|`9/phelp `2(shows proxy commands)|left|2480|"
+                "\nadd_textbox|`9/tp `2(teleport to player)|left|2480|"
+                "\nadd_textbox|`9/ghost `2(ghost mode)|left|2480|"
+                "\nadd_textbox|`9/uid [name]`2(resolves name to uid)|left|2480|"
+                "\nadd_textbox|`9/name `2(change name visual)|left|2480|"
+                "\nadd_textbox|`9/flag `2(change flag like guild) |left|2480|"
+                "\nadd_textbox|`9/setcountry `2change country flag still bug)|left|2480|"
+                "\nadd_textbox|`9/warp `2(Warping world without super supporter)|left|2480|"
+                "\nadd_textbox|`9/ft  `2(fast trash)|left|2480|"
+                "\nadd_textbox|`9/fd  `2(fast drop)|left|2480|"
+                "\nadd_textbox|`9/skin [id] `2(sets your skin)|left|2480|"
+                "\nadd_textbox|`9/pullall `2(only for owner or admin)|left|2480|"
+                "\nadd_textbox|`9/banall `2(only for owner or admin)|left|2480|"
+                "\nadd_textbox|`9/killall `2(only for owner or admin)|left|2480|"
+                "\nadd_textbox|`9/tradeall `2(trade all people in world)|left|2480|"
+                "\nadd_textbox|`9/wm `2(wrenchmode pull, kick, ban, trade)|left|2480|"
+                "\nadd_textbox|`9/ws [choose one]`2(set wrench mode to pull, kick, ban, or trade)|left|2480|"
                 "\nadd_quick_exit|"
                 "\nend_dialog|end|Cancel|Okay|";
             variantlist_t liste{ "OnDialogRequest" };
