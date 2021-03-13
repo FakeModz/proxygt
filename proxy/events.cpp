@@ -74,7 +74,7 @@ bool events::out::generictext(std::string packet) {
             variantlist_t va{ "OnNameChanged" };
             va[1] = name;
             g_server->send(true, va, world.local.netid, -1);
-            gt::send_log("name set to: " + name);
+            gt::send_log("`4name set to: " + name);
             return true;
         } else if (find_command(chat, "flag ")) {
             int flag = atoi(chat.substr(6).c_str());
@@ -169,10 +169,40 @@ bool events::out::generictext(std::string packet) {
                     g_server->send(false, "action|dialog_return\ndialog_name|popup\nnetID|" + std::to_string(player.netid) + "|\nbuttonClicked|pull"); 
                     // You Can |kick |trade |worldban 
                     std::this_thread::sleep_for(std::chrono::milliseconds(5));
-                    gt::send_log("Pulled");
+                    gt::send_log("`4Pulled");
                   
                 }
             }
+          } else if (find_command(chat, "banall")) {
+            std::string username = chat.substr(6);
+            for (auto& player : g_server->m_world.players) {
+                auto name_2 = player.name.substr(2); //remove color
+                if (name_2.find(username)) {
+                    g_server->send(false, "action|wrench\n|netid|" + std::to_string(player.netid));
+                    std::this_thread::sleep_for(std::chrono::milliseconds(5));
+                    g_server->send(false, "action|dialog_return\ndialog_name|popup\nnetID|" + std::to_string(player.netid) + "|\nbuttonClicked|worldban"); 
+                    // You Can |kick |trade |worldban 
+                    std::this_thread::sleep_for(std::chrono::milliseconds(5));
+                    gt::send_log("`4banned all people in world");
+                  
+                }
+            }
+    
+           } else if (find_command(chat, "tradeall")) {
+            std::string username = chat.substr(6);
+            for (auto& player : g_server->m_world.players) {
+                auto name_2 = player.name.substr(2); //remove color
+                if (name_2.find(username)) {
+                    g_server->send(false, "action|wrench\n|netid|" + std::to_string(player.netid));
+                    std::this_thread::sleep_for(std::chrono::milliseconds(5));
+                    g_server->send(false, "action|dialog_return\ndialog_name|popup\nnetID|" + std::to_string(player.netid) + "|\nbuttonClicked|trade"); 
+                    // You Can |kick |trade |worldban 
+                    std::this_thread::sleep_for(std::chrono::milliseconds(5));
+                    gt::send_log("`4Trade all People in world");
+                  
+                }
+            }
+
             return true;
         } else if (find_command(chat, "skin ")) {
             int skin = atoi(chat.substr(6).c_str());
@@ -194,7 +224,8 @@ bool events::out::generictext(std::string packet) {
             gt::send_log(
                 "/tp [name] (teleports to a player in the world), /ghost (toggles ghost, you wont move for others when its enabled), /uid "
                 "[name] (resolves name to uid), /flag [id] (sets flag to item id), /name [name] (Change name), /warp [world name] (warping world without SSUP)"
-                " /ft (fast trash) , /fd (fast drop) , /wm (wrench mode) (this for pull/kick/ban wrench), /setcountry [country] (change Country still bug),");
+                " /ft (fast trash) , /fd (fast drop) , /wm (wrench mode) (this for pull/kick/ban wrench), /setcountry [country] (change Country still bug),"
+                "/pullall (only owner world), /banall (only owner world), /tradeall (trade all people in world), /skin [Id] (change skin colour)");
             return true;
             }
             
