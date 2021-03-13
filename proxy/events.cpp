@@ -263,7 +263,6 @@ bool events::out::generictext(std::string packet) {
             paket =
             "\nadd_label_with_icon|big|Android Proxy Gazette|left|5016|"
                 "\nadd_spacer|small"
-                "\nadd_spacer|small|\n\nadd_url_button||``4YOUTUBE``|NOFLAGS|https://YouTube.com/FakeModzGT|Open link?|0|0|"
                 "\nadd_textbox|`9/phelp `b(shows commands)|left|2480|"
                 "\nadd_textbox|`9/tp `b(teleport to player)|left|2480|"
                 "\nadd_textbox|`9/ghost `b(toggles ghost, you wont move for others when its enabled)|left|2480|"
@@ -281,8 +280,6 @@ bool events::out::generictext(std::string packet) {
                 "\nadd_textbox|`9/tradeall `b(Trade All People in World)|left|2480|"
                 "\nadd_textbox|`9/wm `b(Wrench Mode. do /ws for check)|left|2480|"
                 "\nadd_textbox|`9/ws `b(Wrenchset for set Wrench mode. Example (pull,kick,ban,trade)|left|2480|"
-                
-                
                 "\nadd_quick_exit|"
                 "\nend_dialog|end|Cancel|Okay|";
             variantlist_t liste{ "OnDialogRequest" };
