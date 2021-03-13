@@ -1,7 +1,9 @@
-# Growtopia enet proxy edited by FakeModz
-# Download release for V3.51 [here](https://github.com/ama6nen/enetproxy/releases/tag/V3.51)
-# NOTE: This is not an internal cheat. Proxy is not an internal cheat in any way or form.
-## For internal see [this](https://github.com/ama6nen/INZERNAL), my new internal project.
+# Growtopia enet proxy edited by FakeModz#1192
+*if you want Re-edit put credits :
+*ama6nen
+*GuckTubeYT
+*FakeModz YT
+*or die!!!!!! 
 
 ## Don't add me in discord for help with compiling/adding feature/some simple thing with proxy or you will get instantly blocked
 
