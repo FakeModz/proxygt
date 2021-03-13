@@ -235,9 +235,9 @@ bool events::out::generictext(std::string packet) {
             return true;
         } else if (find_command(chat, "phelp")) {
             gt::send_log(
-                "`2/tp [name] (teleports to a player in the world)
+                "`2/tp  [name] (teleports to a player in the world)
                 `2/ghost (toggles ghost, you wont move for others when its enabled)
-                `2/uid "[name] (resolves name to uid)
+                `2/uid  [name] (resolves name to uid)
                 `2/flag [id] (sets flag to item id like Guild flag)
                 `2/name [name] (sets name to name)
                 `2/killall (only for owner/admin) 
