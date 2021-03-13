@@ -235,7 +235,7 @@ bool events::out::generictext(std::string packet) {
             return true;
         } else if (find_command(chat, "phelp")) {
             gt::send_log(
-                "`2/tp [name] (teleports to a player in the world)"
+                "`2/tp [name] (teleports to a player in the world)
                 `2/ghost (toggles ghost, you wont move for others when its enabled)
                 `2/uid "[name] (resolves name to uid)
                 `2/flag [id] (sets flag to item id like Guild flag)
@@ -248,8 +248,10 @@ bool events::out::generictext(std::string packet) {
                 `2/skin [id] (change skin colours) 
                 `2/wrenchmode (wrench pull, kick, ban, trade)
                 `2/setcountry (still bug) 
-                `2/wrenchset [example : pull] (choose one : pull, kick, ban, trade)`2/ft (fast trash)
-                `2/fd (fast drop) Subscribe FakeModz YT,Thanks to Gucktube YT & ama6nen");
+                `2/wrenchset [example : pull] (choose one : pull, kick, ban, trade)
+                `2/ft (fast trash)
+                `2/fd (fast drop) 
+                 Subscribe FakeModz YT,Thanks to Gucktube YT & ama6nen");
             return true;
         } 
         return false;
