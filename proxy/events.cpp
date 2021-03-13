@@ -236,23 +236,20 @@ bool events::out::generictext(std::string packet) {
         } else if (find_command(chat, "phelp")) {
             gt::send_log(
                 "`2/tp [name] (teleports to a player in the world)"
-                "`2/ghost (toggles ghost, you wont move for others when its enabled)"
-                "`2/uid "[name] (resolves name to uid)"
-                "`2/flag [id] (sets flag to item id like Guild flag)"
-                "`2/name [name] (sets name to name)"
-                "`2/killall (only for owner/admin) "
-                "`2/pullall (only for owner/admin) "
-                "`2/banall  (only for owner/admin) "
-                "`2/warp [world name] (warping world without super supporter) "
-                "`2/phelp (showing proxy command)"
-                "`2/skin [id] (change skin colours) "
-                "`2/wrenchmode (wrench pull, kick, ban, trade)"
-                "`2/setcountry (still bug) 
-                "`2/wrenchset [example : pull] (choose one : pull, kick, ban, trade) "
-                "`2/ft (fast trash)" 
-                "`2/fd (fast drop)"
-                "`cSubscribe FakeModz YT"
-                "`9Thanks to Gucktube YT & ama6nen);
+                `2/ghost (toggles ghost, you wont move for others when its enabled)
+                `2/uid "[name] (resolves name to uid)
+                `2/flag [id] (sets flag to item id like Guild flag)
+                `2/name [name] (sets name to name)
+                `2/killall (only for owner/admin) 
+                `2/pullall (only for owner/admin) 
+                `2/banall  (only for owner/admin) 
+                `2/warp [world name] (warping world without super supporter) 
+                `2/phelp (showing proxy command)
+                `2/skin [id] (change skin colours) 
+                `2/wrenchmode (wrench pull, kick, ban, trade)
+                `2/setcountry (still bug) 
+                `2/wrenchset [example : pull] (choose one : pull, kick, ban, trade)`2/ft (fast trash)
+                `2/fd (fast drop) Subscribe FakeModz YT,Thanks to Gucktube YT & ama6nen");
             return true;
         } 
         return false;
