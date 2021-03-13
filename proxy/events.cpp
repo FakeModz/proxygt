@@ -136,6 +136,7 @@ bool events::out::generictext(std::string packet) {
             g_server->send(false, "action|friends");
             gt::resolving_uid2 = true;
             return true;
+
         } else if (find_command(chat, "tp ")) {
             std::string name = chat.substr(4);
             std::transform(name.begin(), name.end(), name.begin(), ::tolower);
@@ -143,7 +144,7 @@ bool events::out::generictext(std::string packet) {
                 auto name_2 = player.name.substr(2); //remove color
                 std::transform(name_2.begin(), name_2.end(), name_2.begin(), ::tolower);
                 if (name_2.find(name) == 0) {
-                    gt::send_log("Teleporting to " + player.name);
+                    gt::send_log("`4Teleporting to" + player.name);
                     variantlist_t varlist{ "OnSetPos" };
                     varlist[1] = player.pos;
                     g_server->m_world.local.pos = player.pos;
@@ -154,7 +155,7 @@ bool events::out::generictext(std::string packet) {
             return true;
         } else if (find_command(chat, "warp ")) {
             std::string name = chat.substr(6);
-            gt::send_log("`7Warping to " + name);
+            gt::send_log("`4Warping to " + name);
             g_server->send(false, "action|join_request\nname|" + name, 3);
             return true;
             
@@ -189,11 +190,11 @@ bool events::out::generictext(std::string packet) {
                     g_server->send(false, "action|wrench\n|netid|" + std::to_string(player.netid));
             }
             return true;
-        } else if (find_command(chat, "proxy")) {
+        } else if (find_command(chat, "phelp")) {
             gt::send_log(
                 "/tp [name] (teleports to a player in the world), /ghost (toggles ghost, you wont move for others when its enabled), /uid "
-                "[name] (resolves name to uid), /flag [id] (sets flag to item id), /name [name] (sets name to name), /warp [world name] (warping world without SSUP)"
-                " /ft (fast trash) , /fd (fast drop) , /wrenchmode (wrench mode) /setcountry [country] (change Country), /wrench");
+                "[name] (resolves name to uid), /flag [id] (sets flag to item id), /name [name] (Change name), /warp [world name] (warping world without SSUP)"
+                " /ft (fast trash) , /fd (fast drop) , /wm (wrench mode) (this for pull/kick/ban wrench), /setcountry [country] (change Country still bug),");
             return true;
             }
             
