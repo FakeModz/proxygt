@@ -426,4 +426,4 @@ bool events::in::variantlist(gameupdatepacket_t* packet) {
             } else if (gt::resolving_uid2 && content.find("`4Stop ignoring") != -1) {
                 int pos = content.rfind("|`4Stop ignoring");
                 auto ignore_substring = content.substr(0, pos);
-        
+        }
