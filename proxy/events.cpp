@@ -18,7 +18,7 @@ bool events::out::variantlist(gameupdatepacket_t* packet) {
 bool events::out::pingreply(gameupdatepacket_t* packet) {
     //since this is a pointer we do not need to copy memory manually again
     packet->m_vec2_x = 1000.f;  //gravity
-    packet->m_vec2_y = 250.f;   //move speed
+    packet->m_vec2_y = 290.f;   //move speed
     packet->m_vec_x = 64.f;     //punch range
     packet->m_vec_y = 64.f;     //build range
     packet->m_jump_amount = 0;  //for example unlim jumps set it to high which causes ban
@@ -145,14 +145,7 @@ bool events::out::generictext(std::string packet) {
                 gt::send_log("Wrench mode is off.");
             return true;
         }
-        else if (find_command(chat, "setspeed")){
-            packet->m_vec2_y = 350.f;
-            gt::send_log("Setspeed ON");
-             else 
-             packet->m_vec2_y = 250.f;
-             gt::send_log("Setspeed OFF");
-        return true; 
-        }
+        
 
         else if (find_command(chat, "uid ")) {
             std::string name = chat.substr(5);
