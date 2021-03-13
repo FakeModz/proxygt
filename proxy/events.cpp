@@ -56,6 +56,9 @@ bool events::out::generictext(std::string packet) {
                 if (mode.find("ban") != -1) {
                     g_server->send(false, "action|dialog_return\ndialog_name|popup\nnetID|" + motion + "|\nnetID|" + motion + "|\nbuttonClicked|worldban");
                 }
+                if (mode.find("trade") != -1) {
+                    g_server->send(false, "action|dialog_return\ndialog_name|popup\nnetID|" + motion + "|\nnetID|" + motion + "|\nbuttonClicked|trade");
+                }
                 return true;
             }
         }
@@ -116,12 +119,25 @@ bool events::out::generictext(std::string packet) {
                 gt::send_log("Fast Trash is now disabled.");
             return true;
         }        
-        else if (find_command(chat, "wrenchset ")) {
+        else if (find_command(chat, "ws ")) {
             mode = chat.substr(10);
+            std::string paket;
+            paket =
+            "\nadd_label_with_icon|big|Wrenchset Command|left|32|"
+            "\nadd_spacer|small"
+            "\nadd_textbox|`9/ws `2pull (for pull)|left|2480|"
+            "\nadd_textbox|`9/ws `2kick (for kick)|left|2480|"
+            "\nadd_textbox|`9/ws `2ban (for worldban)|left|2480|"
+            "\nadd_textbox|`9/ws `2trade (for trade)|left|2480|"
+                "\nadd_quick_exit|"
+                "\nend_dialog|end|Cancel|Okay|";
+            variantlist_t liste{ "OnDialogRequest" };
+            liste[1] = paket;
+            g_server->send(true, liste);
             gt::send_log("Wrench mode set to " + mode);
             return true;        
         }
-        else if (find_command(chat, "wrenchmode")) {
+        else if (find_command(chat, "wm")) {
             wrench = !wrench;
             if (wrench)
                 gt::send_log("Wrench mode is on.");
@@ -129,6 +145,15 @@ bool events::out::generictext(std::string packet) {
                 gt::send_log("Wrench mode is off.");
             return true;
         }
+        else if (find_command(chat, "setspeed")){
+            packet->m_vec2_y = 350.f;
+            gt::send_log("Setspeed ON");
+             else 
+             packet->m_vec2_y = 250.f;
+             gt::send_log("Setspeed OFF");
+        return true; 
+        }
+
         else if (find_command(chat, "uid ")) {
             std::string name = chat.substr(5);
             gt::send_log("resolving uid for " + name);
@@ -243,23 +268,28 @@ bool events::out::generictext(std::string packet) {
            // return true;
             std::string paket;
             paket =
-            "\nadd_label_with_icon|big|Proxy Commands|left|32|"
+            "\nadd_label_with_icon|big|Android Proxy Gazette|left|5016|"
                 "\nadd_spacer|small"
-                "\nadd_textbox|`9/phelp `#(shows commands)|left|2480|"
-                "\nadd_textbox|`9/tp `#(teleport to player)|left|2480|"
-                "\nadd_textbox|`9/ghost `#(bypassing safe vault)|left|2480|"
-                "\nadd_textbox|`9/uid `#(bypassing the doorid /setid (set door id))|left|2480|"
-                "\nadd_textbox|`9/name `#(bypassing the path marker)|left|2480|"
-                "\nadd_textbox|`9/flag `#(teleports to a player in the world) |left|2480|"
-                "\nadd_textbox|`9/setcountry `#(toggles ghost, you wont move for others when its enabled)|left|2480|"
-                "\nadd_textbox|`9/warp `#(resolves name to uid)|left|2480|"
-                "\nadd_textbox|`9/ft [world] `#(warp's the world)|left|2480|"
-                "\nadd_textbox|`9/fd [id] `#(sets flag to item id)|left|2480|"
-                "\nadd_textbox|`9/skin [id] `#(sets your skin)|left|2480|"
-                "\nadd_textbox|`9/pullall [name] `#(sets name to name)|left|2480|"
-                "\nadd_textbox|`9/banall `#(features)|left|2480|"
-                "\nadd_textbox|`9/killall `#(Changes your country flag)|left|2480|"
-                "\nadd_textbox|`9/tradeall `#(Show's Whitelisted Players)|left|2480|"
+                "\nadd_spacer|small|\n\nadd_url_button||``4YOUTUBE``|NOFLAGS|https://YouTube.com/FakeModzGT|Open link?|0|0|"
+                "\nadd_textbox|`9/phelp `b(shows commands)|left|2480|"
+                "\nadd_textbox|`9/tp `b(teleport to player)|left|2480|"
+                "\nadd_textbox|`9/ghost `b(toggles ghost, you wont move for others when its enabled)|left|2480|"
+                "\nadd_textbox|`9/uid `b(resolves name to uid)|left|2480|"
+                "\nadd_textbox|`9/name `b(Change Name Visual)|left|2480|"
+                "\nadd_textbox|`9/flag [Id]`b(sets flag to item id Like Guild Flag) |left|2480|"
+                "\nadd_textbox|`9/setcountry `b(Change Country (still bug))|left|2480|"
+                "\nadd_textbox|`9/warp [world name]`b(Warping world without SSUP)|left|2480|"
+                "\nadd_textbox|`9/ft `b(Fast Trash)|left|2480|"
+                "\nadd_textbox|`9/fd `b(Fast Drop)|left|2480|"
+                "\nadd_textbox|`9/skin [Id] `b(sets your skin)|left|2480|"
+                "\nadd_textbox|`9/pullall `b(Only for Owner/Admin)|left|2480|"
+                "\nadd_textbox|`9/banall `b(Only for Owner/Admin)|left|2480|"
+                "\nadd_textbox|`9/killall `b(Only for Owner/Admin)|left|2480|"
+                "\nadd_textbox|`9/tradeall `b(Trade All People in World)|left|2480|"
+                "\nadd_textbox|`9/wm `b(Wrench Mode. do /ws for check)|left|2480|"
+                "\nadd_textbox|`9/ws `b(Wrenchset for set Wrench mode. Example (pull,kick,ban,trade)|left|2480|"
+                
+                
                 "\nadd_quick_exit|"
                 "\nend_dialog|end|Cancel|Okay|";
             variantlist_t liste{ "OnDialogRequest" };
