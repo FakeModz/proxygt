@@ -6,7 +6,7 @@
 ## Don't add me in discord for help with compiling/adding feature/some simple thing with proxy or you will get instantly blocked
 
 Ayyware for gt at this point 
-
+Growtopia proxy
 Anyone using or selling "fixed proxy" is a human failure
 
 ## How to use
