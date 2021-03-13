@@ -83,6 +83,6 @@ Anyone using or selling "fixed proxy" is a human failure
 ![x](https://i.imgur.com/3DFiMgS.png "Proxy pic 2")
 ![x](https://i.imgur.com/Lndhj70.png "Proxy pic 1")
 
-#Thanks to :
-*Gucktubeyt [visit] https://github.com/gucktubeyt
-*ama6nen [visit] https://github.com/ama6nen
+# Thanks to :
+* Gucktubeyt [visit] https://github.com/gucktubeyt
+* ama6nen [visit] https://github.com/ama6nen
