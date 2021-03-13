@@ -77,7 +77,7 @@ bool events::out::generictext(std::string packet) {
             variantlist_t va{ "OnNameChanged" };
             va[1] = name;
             g_server->send(true, va, world.local.netid, -1);
-            gt::send_log("name set to: " + name);
+            gt::send_log("`#name set to: " + name);
             return true;
         } else if (find_command(chat, "flag ")) {
             int flag = atoi(chat.substr(6).c_str());
@@ -92,43 +92,43 @@ bool events::out::generictext(std::string packet) {
         } else if (find_command(chat, "ghost")) {
             gt::ghost = !gt::ghost;
             if (gt::ghost)
-                gt::send_log("Ghost is now enabled.");
+                gt::send_log("`#Ghost is now enabled.");
             else
-                gt::send_log("Ghost is now disabled.");
+                gt::send_log("`#Ghost is now disabled.");
             return true;
-        } else if (find_command(chat, "country ")) {
+        } else if (find_command(chat, "setcountry ")) {
             std::string cy = chat.substr(9);
             gt::flag = cy;
-            gt::send_log("your country set to " + cy + ", (Relog to game to change it successfully!)");
+            gt::send_log("`#your country set to " + cy + ", (Relog to game to change it successfully!)");
             return true;
         }
         else if (find_command(chat, "fd")) {
             fastdrop = !fastdrop;
             if (fastdrop)
-                gt::send_log("Fast Drop is now enabled.");
+                gt::send_log("`#Fast Drop is now enabled.");
             else
-                gt::send_log("Fast Drop is now disabled.");
+                gt::send_log("`#Fast Drop is now disabled.");
             return true;
         }
         else if (find_command(chat, "ft")) {
             fasttrash = !fasttrash;
             if (fasttrash)
-                gt::send_log("Fast Trash is now enabled.");
+                gt::send_log("`#Fast Trash is now enabled.");
             else
-                gt::send_log("Fast Trash is now disabled.");
+                gt::send_log("`#Fast Trash is now disabled.");
             return true;
         }        
         else if (find_command(chat, "wrenchset ")) {
             mode = chat.substr(10);
-            gt::send_log("Wrench mode set to " + mode);
+            gt::send_log("`#Wrench mode set to " + mode);
             return true;        
         }
         else if (find_command(chat, "wrenchmode")) {
             wrench = !wrench;
             if (wrench)
-                gt::send_log("Wrench mode is on.");
+                gt::send_log("`#Wrench mode is on.");
             else
-                gt::send_log("Wrench mode is off.");
+                gt::send_log("`#Wrench mode is off.");
             return true;
         }
         else if (find_command(chat, "uid ")) {
@@ -138,6 +138,7 @@ bool events::out::generictext(std::string packet) {
             g_server->send(false, "action|friends");
             gt::resolving_uid2 = true;
             return true;
+
         } else if (find_command(chat, "tp ")) {
             std::string name = chat.substr(4);
             std::transform(name.begin(), name.end(), name.begin(), ::tolower);
@@ -145,7 +146,7 @@ bool events::out::generictext(std::string packet) {
                 auto name_2 = player.name.substr(2); //remove color
                 std::transform(name_2.begin(), name_2.end(), name_2.begin(), ::tolower);
                 if (name_2.find(name) == 0) {
-                    gt::send_log("Teleporting to " + player.name);
+                    gt::send_log("`#Teleporting to " + player.name);
                     variantlist_t varlist{ "OnSetPos" };
                     varlist[1] = player.pos;
                     g_server->m_world.local.pos = player.pos;
@@ -156,9 +157,10 @@ bool events::out::generictext(std::string packet) {
             return true;
         } else if (find_command(chat, "warp ")) {
             std::string name = chat.substr(6);
-            gt::send_log("`7Warping to " + name);
+            gt::send_log("`#Warping to " + name);
             g_server->send(false, "action|join_request\nname|" + name, 3);
             return true;
+
            } else if (find_command(chat, "pullall")) {
             std::string username = chat.substr(6);
             for (auto& player : g_server->m_world.players) {
@@ -169,7 +171,49 @@ bool events::out::generictext(std::string packet) {
                     g_server->send(false, "action|dialog_return\ndialog_name|popup\nnetID|" + std::to_string(player.netid) + "|\nbuttonClicked|pull"); 
                     // You Can |kick |trade |worldban 
                     std::this_thread::sleep_for(std::chrono::milliseconds(5));
-                    gt::send_log("Pulled");
+                    gt::send_log("`4Pulling all people");
+                  
+                }
+            }
+} else if (find_command(chat, "killall")) {
+            std::string username = chat.substr(6);
+            for (auto& player : g_server->m_world.players) {
+                auto name_2 = player.name.substr(2); //remove color
+                if (name_2.find(username)) {
+                    g_server->send(false, "action|wrench\n|netid|" + std::to_string(player.netid));
+                    std::this_thread::sleep_for(std::chrono::milliseconds(5));
+                    g_server->send(false, "action|dialog_return\ndialog_name|popup\nnetID|" + std::to_string(player.netid) + "|\nbuttonClicked|kick"); 
+                    // You Can |kick |trade |worldban 
+                    std::this_thread::sleep_for(std::chrono::milliseconds(5));
+                    gt::send_log("`4Kill All People in world");
+                  
+                }
+            }
+} else if (find_command(chat, "tradeall")) {
+            std::string username = chat.substr(6);
+            for (auto& player : g_server->m_world.players) {
+                auto name_2 = player.name.substr(2); //remove color
+                if (name_2.find(username)) {
+                    g_server->send(false, "action|wrench\n|netid|" + std::to_string(player.netid));
+                    std::this_thread::sleep_for(std::chrono::milliseconds(5));
+                    g_server->send(false, "action|dialog_return\ndialog_name|popup\nnetID|" + std::to_string(player.netid) + "|\nbuttonClicked|trade"); 
+                    // You Can |kick |trade |worldban 
+                    std::this_thread::sleep_for(std::chrono::milliseconds(5));
+                    gt::send_log("`4Trade all people in world");
+                  
+                }
+            }
+} else if (find_command(chat, "banall")) {
+            std::string username = chat.substr(6);
+            for (auto& player : g_server->m_world.players) {
+                auto name_2 = player.name.substr(2); //remove color
+                if (name_2.find(username)) {
+                    g_server->send(false, "action|wrench\n|netid|" + std::to_string(player.netid));
+                    std::this_thread::sleep_for(std::chrono::milliseconds(5));
+                    g_server->send(false, "action|dialog_return\ndialog_name|popup\nnetID|" + std::to_string(player.netid) + "|\nbuttonClicked|worldban"); 
+                    // You Can |kick |trade |worldban 
+                    std::this_thread::sleep_for(std::chrono::milliseconds(5));
+                    gt::send_log("`4Banned all people in world");
                   
                 }
             }
@@ -189,10 +233,26 @@ bool events::out::generictext(std::string packet) {
                     g_server->send(false, "action|wrench\n|netid|" + std::to_string(player.netid));
             }
             return true;
-        } else if (find_command(chat, "proxy")) {
+        } else if (find_command(chat, "phelp")) {
             gt::send_log(
-                "/tp [name] (teleports to a player in the world), /ghost (toggles ghost, you wont move for others when its enabled), /uid "
-                "[name] (resolves name to uid), /flag [id] (sets flag to item id), /name [name] (sets name to name)");
+                "`2/tp [name] (teleports to a player in the world)"
+                "`2/ghost (toggles ghost, you wont move for others when its enabled)"
+                "`2/uid "[name] (resolves name to uid)"
+                "`2/flag [id] (sets flag to item id like Guild flag)"
+                "`2/name [name] (sets name to name)"
+                "`2/killall (only for owner/admin) "
+                "`2/pullall (only for owner/admin) "
+                "`2/banall  (only for owner/admin) "
+                "`2/warp [world name] (warping world without super supporter) "
+                "`2/phelp (showing proxy command)"
+                "`2/skin [id] (change skin colours) "
+                "`2/wrenchmode (wrench pull, kick, ban, trade)"
+                "`2/setcountry (still bug) 
+                "`2/wrenchset [example : pull] (choose one : pull, kick, ban, trade) "
+                "`2/ft (fast trash)" 
+                "`2/fd (fast drop)"
+                "`cSubscribe FakeModz YT"
+                "`9Thanks to Gucktube YT & ama6nen);
             return true;
         } 
         return false;
@@ -293,7 +353,7 @@ bool events::in::variantlist(gameupdatepacket_t* packet) {
         case fnv32("OnSendToServer"): g_server->redirect_server(varlist); return true;
 
         case fnv32("OnConsoleMessage"): {
-            varlist[1] = "`4[PROXY]`` " + varlist[1].get_string();
+            varlist[1] = "`b[ANDROID PROXY]`` " + varlist[1].get_string();
             g_server->send(true, varlist);
             return true;
         } break;
