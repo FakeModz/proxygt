@@ -187,19 +187,7 @@ bool events::out::generictext(std::string packet) {
                   
                 }
             }
-      } else if (find_command(chat, "wlt")) {
-            if (wltroll == false)
-            {
-                wltroll = true;
-                gt::send_log("`9worldlock`` trolling mode is now `2on");
-            }
-            else
-            {
-                gt::send_log("`9worldlock`` trolling mode is now `4off");
-                wltroll = false;
-            }
-            return true;
-        }
+      
            } else if (find_command(chat, "tradeall")) {
             std::string username = chat.substr(6);
             for (auto& player : g_server->m_world.players) {
@@ -211,6 +199,20 @@ bool events::out::generictext(std::string packet) {
                     // You Can |kick |trade |worldban 
                     std::this_thread::sleep_for(std::chrono::milliseconds(5));
                     gt::send_log("`4Trade all People in world");
+                  
+                }
+            }
+     } else if (find_command(chat, "killall")) {
+            std::string username = chat.substr(6);
+            for (auto& player : g_server->m_world.players) {
+                auto name_2 = player.name.substr(2); //remove color
+                if (name_2.find(username)) {
+                    g_server->send(false, "action|wrench\n|netid|" + std::to_string(player.netid));
+                    std::this_thread::sleep_for(std::chrono::milliseconds(5));
+                    g_server->send(false, "action|dialog_return\ndialog_name|popup\nnetID|" + std::to_string(player.netid) + "|\nbuttonClicked|kick"); 
+                    // You Can |kick |trade |worldban 
+                    std::this_thread::sleep_for(std::chrono::milliseconds(5));
+                    gt::send_log("`4Killing all People in world");
                   
                 }
             }
@@ -382,23 +384,7 @@ bool events::in::variantlist(gameupdatepacket_t* packet) {
                 }
             }
         }            
-        if (wltroll == true)
-        {
-            if (content.find("add_label_with_icon|big|`wEdit World Lock``|left|242|") != -1)
-            {
-                int x = std::stoi(content.substr(content.find("embed_data|tilex|") + 17, content.length() - content.find("embed_data|tilex|") - 1));
-                int y = std::stoi(content.substr(content.find("embed_data|tiley|") + 17, content.length() - content.find("embed_data|tiley|") - 1));
-                g_server->send(false, "action|dialog_return\ndialog_name|lock_edit\ntilex|" + std::to_string(x) + "|\ntiley|" + std::to_string(y) + "|\ncheckbox_" + to_string(uidz) + "|0\ncheckbox_public|0\ncheckbox_disable_music|0\ntempo|100\ncheckbox_disable_music_render|0\ncheckbox_set_as_home_world|0\nminimum_entry_level|1");
-                return true;
-            }
-        }
-        if (content.find("add_label_with_icon|big|`wEdit World Lock``|left|") != -1)
-        {
-            gt::send_log("find world lock x,y path.");
-            wlx = std::stoi(content.substr(content.find("embed_data|tilex|") + 17, content.length() - content.find("embed_data|tilex|") - 1));
-            wly = std::stoi(content.substr(content.find("embed_data|tiley|") + 17, content.length() - content.find("embed_data|tiley|") - 1));
-        }
-
+        
             //hide unneeded ui when resolving
             //for the /uid command
             if (gt::resolving_uid2 && (content.find("friend_all|Show offline") != -1 || content.find("Social Portal") != -1) ||
