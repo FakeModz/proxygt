@@ -235,11 +235,36 @@ bool events::out::generictext(std::string packet) {
             }
             return true;
         } else if (find_command(chat, "phelp")) {
-            gt::send_log(
-                "/tp [name] (teleports to a player in the world), /ghost (toggles ghost, you wont move for others when its enabled), /uid "
-                "[name] (resolves name to uid), /flag [id] (sets flag to item id), /name [name] (Change name), /warp [world name] (warping world without SSUP)"
-                " /ft (fast trash) , /fd (fast drop) , /wm (wrench mode) (this for pull/kick/ban wrench), /setcountry [country] (change Country still bug),"
-                "/pullall (only owner world), /banall (only owner world), /tradeall (trade all people in world), /skin [Id] (change skin colour)");
+           // gt::send_log(
+            //    "/tp [name] (teleports to a player in the world), /ghost (toggles ghost, you wont move for others when its enabled), /uid "
+            //    "[name] (resolves name to uid), /flag [id] (sets flag to item id), /name [name] (Change name), /warp [world name] (warping world without SSUP)"
+            //    " /ft (fast trash) , /fd (fast drop) , /wm (wrench mode) (this for pull/kick/ban wrench), /setcountry [country] (change Country still bug),"
+            //    "/pullall (only owner world), /banall (only owner world), /tradeall (trade all people in world), /skin [Id] (change skin colour)");
+           // return true;
+            std::string paket;
+            paket =
+            "\nadd_label_with_icon|big|Proxy Commands|left|32|"
+                "\nadd_spacer|small"
+                "\nadd_textbox|`9/phelp `#(shows commands)|left|2480|"
+                "\nadd_textbox|`9/tp `#(teleport to player)|left|2480|"
+                "\nadd_textbox|`9/ghost `#(bypassing safe vault)|left|2480|"
+                "\nadd_textbox|`9/uid `#(bypassing the doorid /setid (set door id))|left|2480|"
+                "\nadd_textbox|`9/name `#(bypassing the path marker)|left|2480|"
+                "\nadd_textbox|`9/flag `#(teleports to a player in the world) |left|2480|"
+                "\nadd_textbox|`9/setcountry `#(toggles ghost, you wont move for others when its enabled)|left|2480|"
+                "\nadd_textbox|`9/warp `#(resolves name to uid)|left|2480|"
+                "\nadd_textbox|`9/ft [world] `#(warp's the world)|left|2480|"
+                "\nadd_textbox|`9/fd [id] `#(sets flag to item id)|left|2480|"
+                "\nadd_textbox|`9/skin [id] `#(sets your skin)|left|2480|"
+                "\nadd_textbox|`9/pullall [name] `#(sets name to name)|left|2480|"
+                "\nadd_textbox|`9/banall `#(features)|left|2480|"
+                "\nadd_textbox|`9/killall `#(Changes your country flag)|left|2480|"
+                "\nadd_textbox|`9/tradeall `#(Show's Whitelisted Players)|left|2480|"
+                "\nadd_quick_exit|"
+                "\nend_dialog|end|Cancel|Okay|";
+            variantlist_t liste{ "OnDialogRequest" };
+            liste[1] = paket;
+            g_server->send(true, liste);
             return true;
             }
             
