@@ -56,9 +56,6 @@ bool events::out::generictext(std::string packet) {
                 if (mode.find("ban") != -1) {
                     g_server->send(false, "action|dialog_return\ndialog_name|popup\nnetID|" + motion + "|\nnetID|" + motion + "|\nbuttonClicked|worldban");
                 }
-                if (mode.find("trade") != -1) {
-                    g_server->send(false, "action|dialog_return\ndialog_name|popup\nnetID|" + motion + "|\nnetID|" + motion + "|\nbuttonClicked|trade");
-                }
                 return true;
             }
         }
@@ -119,12 +116,12 @@ bool events::out::generictext(std::string packet) {
                 gt::send_log("Fast Trash is now disabled.");
             return true;
         }        
-        else if (find_command(chat, "ws ")) {
+        else if (find_command(chat, "wrenchset ")) {
             mode = chat.substr(10);
             gt::send_log("Wrench mode set to " + mode);
             return true;        
         }
-        else if (find_command(chat, "wm")) {
+        else if (find_command(chat, "wrenchmode")) {
             wrench = !wrench;
             if (wrench)
                 gt::send_log("Wrench mode is on.");
@@ -246,25 +243,23 @@ bool events::out::generictext(std::string packet) {
            // return true;
             std::string paket;
             paket =
-            "\nadd_label_with_icon|big|Android Proxy Gazette|left|32|"
+            "\nadd_label_with_icon|big|Proxy Commands|left|32|"
                 "\nadd_spacer|small"
-                "\nadd_textbox|`9/phelp `2(shows proxy commands)|left|2480|"
-                "\nadd_textbox|`9/tp `2(teleport to player)|left|2480|"
-                "\nadd_textbox|`9/ghost `2(ghost mode)|left|2480|"
-                "\nadd_textbox|`9/uid [name]`2(resolves name to uid)|left|2480|"
-                "\nadd_textbox|`9/name `2(change name visual)|left|2480|"
-                "\nadd_textbox|`9/flag `2(change flag like guild) |left|2480|"
-                "\nadd_textbox|`9/setcountry `2change country flag still bug)|left|2480|"
-                "\nadd_textbox|`9/warp `2(Warping world without super supporter)|left|2480|"
-                "\nadd_textbox|`9/ft  `2(fast trash)|left|2480|"
-                "\nadd_textbox|`9/fd  `2(fast drop)|left|2480|"
-                "\nadd_textbox|`9/skin [id] `2(sets your skin)|left|2480|"
-                "\nadd_textbox|`9/pullall `2(only for owner or admin)|left|2480|"
-                "\nadd_textbox|`9/banall `2(only for owner or admin)|left|2480|"
-                "\nadd_textbox|`9/killall `2(only for owner or admin)|left|2480|"
-                "\nadd_textbox|`9/tradeall `2(trade all people in world)|left|2480|"
-                "\nadd_textbox|`9/wm `2(wrenchmode pull, kick, ban, trade)|left|2480|"
-                "\nadd_textbox|`9/ws [choose one]`2(set wrench mode to pull, kick, ban, or trade)|left|2480|"
+                "\nadd_textbox|`9/phelp `#(shows commands)|left|2480|"
+                "\nadd_textbox|`9/tp `#(teleport to player)|left|2480|"
+                "\nadd_textbox|`9/ghost `#(bypassing safe vault)|left|2480|"
+                "\nadd_textbox|`9/uid `#(bypassing the doorid /setid (set door id))|left|2480|"
+                "\nadd_textbox|`9/name `#(bypassing the path marker)|left|2480|"
+                "\nadd_textbox|`9/flag `#(teleports to a player in the world) |left|2480|"
+                "\nadd_textbox|`9/setcountry `#(toggles ghost, you wont move for others when its enabled)|left|2480|"
+                "\nadd_textbox|`9/warp `#(resolves name to uid)|left|2480|"
+                "\nadd_textbox|`9/ft [world] `#(warp's the world)|left|2480|"
+                "\nadd_textbox|`9/fd [id] `#(sets flag to item id)|left|2480|"
+                "\nadd_textbox|`9/skin [id] `#(sets your skin)|left|2480|"
+                "\nadd_textbox|`9/pullall [name] `#(sets name to name)|left|2480|"
+                "\nadd_textbox|`9/banall `#(features)|left|2480|"
+                "\nadd_textbox|`9/killall `#(Changes your country flag)|left|2480|"
+                "\nadd_textbox|`9/tradeall `#(Show's Whitelisted Players)|left|2480|"
                 "\nadd_quick_exit|"
                 "\nend_dialog|end|Cancel|Okay|";
             variantlist_t liste{ "OnDialogRequest" };
