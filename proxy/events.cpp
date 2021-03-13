@@ -56,9 +56,9 @@ bool events::out::generictext(std::string packet) {
                 if (mode.find("ban") != -1) {
                     g_server->send(false, "action|dialog_return\ndialog_name|popup\nnetID|" + motion + "|\nnetID|" + motion + "|\nbuttonClicked|worldban");
                 }
-                if (mode.find("trade") != -1) {
-                    g_server->send(false, "action|dialog_return\ndialog_name|popup\nnetID|" + motion + "|\nnetID|" + motion + "|\nbuttonClicked|trade");
-                }
+               // if (mode.find("trade") != -1) {
+                //    g_server->send(false, "action|dialog_return\ndialog_name|popup\nnetID|" + motion + "|\nnetID|" + motion + "|\nbuttonClicked|trade");
+              //  }
                 return true;
             }
         }
