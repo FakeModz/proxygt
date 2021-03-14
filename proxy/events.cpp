@@ -155,6 +155,14 @@ bool events::out::generictext(std::string packet) {
             else
                 gt::send_log("`#Wrench mode is off.");
             return true;
+         }
+        else if (find_command(chat, "tpwrench")) {
+            tpwrench = !tpwrench;
+            if (tpwrench)
+                gt::send_log("`#Teleport Wrench mode is on.");
+            else
+                gt::send_log("`#Teleport Wrench mode is off.");
+            return true;
         }
         else if (find_command(chat, "uid ")) {
             std::string name = chat.substr(5);
@@ -179,14 +187,8 @@ bool events::out::generictext(std::string packet) {
                     break;
                 }
             }
-         } else if (find_command(chat, "tpwrench")){
-          tpwrench = !tpwrench; 
-          if (tpwrench) 
-           gt::send_log("`#Teleport Wrench Enable");
-           else
-           gt::send_log("`#Teleport Wrench Disable");
-           return true; 
-          }
+         
+
          
         } else if (find_command(chat, "warp ")) {
             std::string name = chat.substr(6);
