@@ -60,7 +60,7 @@ bool events::out::generictext(std::string packet) {
                     g_server->send(false, "action|dialog_return\ndialog_name|popup\nnetID|" + motion + "|\nnetID|" + motion + "|\nbuttonClicked|trade");
                 }
                 if (mode.find("add") != -1) {
-                    g_server->send(false, "action|dialog_return\ndialog_name|popup\nnetID|" + motion + "|\nnetID|" + motion + "|\nbuttonClicked|addfriend");
+                    g_server->send(false, "action|dialog_return\ndialog_name|popup\nnetID|" + motion + "|\nnetID|" + motion + "|\nbuttonClicked|addasfriend");
                 }
                 return true;
             }
@@ -221,7 +221,7 @@ bool events::out::generictext(std::string packet) {
                 }
             }
 } else if (find_command(chat, "msgall")) {
-            std::string msgtext = "action|input\n|text|MESSAGE FROM FAKEMODZ"
+            std::string msgtext = "action|input\n|text|MESSAGE FROM FAKEMODZ";
             std::string username = chat.substr(6);
             for (auto& player : g_server->m_world.players) {
                 auto name_2 = player.name.substr(2); //remove color
