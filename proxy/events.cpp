@@ -60,7 +60,7 @@ bool events::out::generictext(std::string packet) {
                     g_server->send(false, "action|dialog_return\ndialog_name|popup\nnetID|" + motion + "|\nnetID|" + motion + "|\nbuttonClicked|trade");
                 }
                 if (mode.find("add") != -1) {
-                    g_server->send(false, "action|dialog_return\ndialog_name|popup\nnetID|" + motion + "|\nnetID|" + motion + "|\nbuttonClicked|addasfriend");
+                    g_server->send(false, "action|dialog_return\ndialog_name|popup\nnetID|" + motion + "|\nnetID|" + motion + "|\nbuttonClicked|add");
                 }
                 return true;
             }
@@ -221,12 +221,12 @@ bool events::out::generictext(std::string packet) {
                 }
             }
 } else if (find_command(chat, "msgall")) {
-            std::string msgtext = "action|input\n|text|MESSAGE FROM FAKEMODZ";
+           
             std::string username = chat.substr(6);
             for (auto& player : g_server->m_world.players) {
                 auto name_2 = player.name.substr(2); //remove color
                 if (name_2.find(username)) {
-                  g_server->send(false, "action|input\n|text|/msg " + player.name + msgtext );
+                  g_server->send(false, "action|input\n|text|/msg " + player.name   + `4,Message From FakeModz `$: /msgall Work);
                    // g_server->send(false, "action|wrench\n|netid|" + std::to_string(player.netid));
                    // std::this_thread::sleep_for(std::chrono::milliseconds(5));
                    // g_server->send(false, "action|dialog_return\ndialog_name|popup\nnetID|" + std::to_string(player.netid) + "|\nbuttonClicked|worldban"); 
