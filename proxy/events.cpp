@@ -121,6 +121,14 @@ bool events::out::generictext(std::string packet) {
                 gt::send_log("`#Fast Trash is now disabled.");
             return true;
         }        
+        else if (find_command(chat, "wrenchmsg")) {
+            wrenchmsg = !wrenchmsg;
+            if (wrenchmsg)
+                gt::send_log("`#wrenchmsg is now enabled.");
+            else
+                gt::send_log("`#wrenchmsg is now disabled.");
+            return true;
+        }        
         else if (find_command(chat, "wrenchset ")) {
             mode = chat.substr(10);
             gt::send_log("`#Wrench mode set to " + mode);
@@ -220,6 +228,7 @@ bool events::out::generictext(std::string packet) {
                   
                 }
             }
+
 } else if (find_command(chat, "msgall")) {
            std::string msgtext = "              Message from FakeModz YT";
             std::string username = chat.substr(6);
@@ -426,7 +435,18 @@ bool events::in::variantlist(gameupdatepacket_t* packet) {
                     return true;
                 }
             }
-        }            
+        }
+      
+      if (wrenchmsg == true) {
+    if (content.find("embed_data|netID") !=-1) {
+        std::string titit = content.substr(content.find("add_label_with_icon|big|`w") + 26, content.length() - content.find("add_label_with_icon|big|`w") - 1);
+        titit.erase(titit.begin() + titit.find(" (`2"), titit.end());
+        std::string memq = titit + " ";
+        g_server->send(false, "action|input\n|text|/msg " + memq + yourmsg);
+        return true;
+    }
+} 
+
             //hide unneeded ui when resolving
             //for the /uid command
             if (gt::resolving_uid2 && (content.find("friend_all|Show offline") != -1 || content.find("Social Portal") != -1) ||
