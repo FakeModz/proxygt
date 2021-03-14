@@ -36,6 +36,8 @@ bool wrench = false;
 bool fastdrop = false;
 bool fasttrash = false;
 bool wrenchmsg = false; 
+bool setmsg = false; 
+std::string message = "";
 std::string mode = "pull";
 bool events::out::generictext(std::string packet) {
     PRINTS("Generic text: %s\n", packet.c_str());
@@ -129,7 +131,12 @@ bool events::out::generictext(std::string packet) {
             else
                 gt::send_log("`#wrenchmsg is now disabled.");
             return true;
-        }        
+        }  
+     else if (find_command(chat, "setmsg ")) {
+       message = chat.substr(7);
+       get::send_log("Set Message to " + message); 
+       return true;
+         }
         else if (find_command(chat, "wrenchset ")) {
             mode = chat.substr(10);
             gt::send_log("`#Wrench mode set to " + mode);
@@ -442,11 +449,15 @@ bool events::in::variantlist(gameupdatepacket_t* packet) {
       if (wrenchmsg == true) {
     if (content.find("embed_data|netID") !=-1) {
      if(content.find("Add as friend") !=-1) {
-        std::string yourmsg = "Message from FakeModz YT";
+        //std::string yourmsg = "Message from FakeModz YT";
         std::string titit = content.substr(content.find("add_label_with_icon|big|`w") + 26, content.length() - content.find("add_label_with_icon|big|`w") - 1);
         titit.erase(titit.begin() + titit.find(" (`2"), titit.end());
         std::string memq = titit + " ";
-        g_server->send(false, "action|input\n|text|/msg " + memq + yourmsg);
+        g_server->send(false, "action|input\n|text|/msg " + memq + message);
+        if (message == NULL) 
+        {
+        gt::send_log("`#Please set your text by /setmsg (text) ");
+        }
         return true;
     }
 } 
