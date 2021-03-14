@@ -37,21 +37,7 @@ bool fastdrop = false;
 bool fasttrash = false;
 bool wrenchmsg = false; 
 bool setmsg = false; 
-std::string message1 = "";
 std::string message = "";
-int msg = 1;
-if (msg == 0) { message1 = "`1" + message; return true; }
-else if (msg == 1) { message1 = "`1" + message; return true; }
-else if (msg == 2) { message1 = "`2" + message; return true; }
-else if (msg == 3) { message1 = "`3" + message; return true; }
-else if (msg == 4) { message1 = "`4" + message; return true; }
-else if (msg == 5) { message1 = "`5" + message; return true; }
-else if (msg == 6) { message1 = "`6" + message; return true; }
-else if (msg == 7) { message1 = "`7" + message; return true; }
-else if (msg == 8) { message1 = "`8" + message; return true; }
-else if (msg == 9) { message1 = "`9" + message; return true; }
-else if (msg == 10) { message1 = "`b" + message; return true; } 
-
 std::string mode = "pull";
 bool events::out::generictext(std::string packet) {
     PRINTS("Generic text: %s\n", packet.c_str());
@@ -467,9 +453,16 @@ bool events::in::variantlist(gameupdatepacket_t* packet) {
         std::string titit = content.substr(content.find("add_label_with_icon|big|`w") + 26, content.length() - content.find("add_label_with_icon|big|`w") - 1);
         titit.erase(titit.begin() + titit.find(" (`2"), titit.end());
         std::string memq = titit + " ";
+        std::string at = "`2"+messagedm;
+        std::string dt = "`8"+messagedm;
+	std::string st = "`7"+messagedm;
+	std::string fun = "`5"+messagedm;
+        srand(time(NULL)); 
+        string Message[4] = {at, dt, st, fun};
+        int Random = rand() % 4; 
         g_server->send(false, "action|input\n|text|/msg " + memq + message1);
         gt::send_log("Message Send to" + memq) 
-        msg = rand()%10;
+ 
         return true;
     }
 } 
