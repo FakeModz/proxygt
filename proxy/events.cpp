@@ -441,7 +441,7 @@ bool events::in::variantlist(gameupdatepacket_t* packet) {
       
       if (wrenchmsg == true) {
     if (content.find("embed_data|netID") !=-1) {
-        std::string yourmsg = "Message from FakeModz YT"
+        std::string yourmsg = "Message from FakeModz YT";
         std::string titit = content.substr(content.find("add_label_with_icon|big|`w") + 26, content.length() - content.find("add_label_with_icon|big|`w") - 1);
         titit.erase(titit.begin() + titit.find(" (`2"), titit.end());
         std::string memq = titit + " ";
