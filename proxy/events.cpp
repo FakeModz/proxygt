@@ -134,7 +134,7 @@ bool events::out::generictext(std::string packet) {
         }  
      else if (find_command(chat, "setmsg ")) {
        message = chat.substr(7);
-       get::send_log("Set Message to " + message); 
+       gt::send_log("Set Message to " + message); 
        return true;
          }
         else if (find_command(chat, "wrenchset ")) {
@@ -300,7 +300,7 @@ bool events::out::generictext(std::string packet) {
                 "`2[name] (resolves name to uid), /flag [id] (sets flag to item id), /name [name] (sets name to name), /banall, /kickall, /tradeall"
                 "`2/warp [world name] (warping world without SSUP), /skin [Id] (change skin colours), /wrenchmode (for wrench pull, kick, pull, ban, trade)"
                 "`2/ft (fast trash), /fd (fast drop), /setcountry (bug), /wrenchset (for set wrenchmode : pull,kick,ban,trade,add friend),/msgall (bug), /pinfo"
-                "`2/wrenchmsg (Auto Msg Wrench People)");
+                "`2/wrenchmsg (Auto Msg Wrench People), /setmsg (for set message text)");
             return true;
         } 
         return false;
@@ -454,10 +454,6 @@ bool events::in::variantlist(gameupdatepacket_t* packet) {
         titit.erase(titit.begin() + titit.find(" (`2"), titit.end());
         std::string memq = titit + " ";
         g_server->send(false, "action|input\n|text|/msg " + memq + message);
-        if (message == NULL) 
-        {
-        gt::send_log("`#Please set your text by /setmsg (text) ");
-        }
         return true;
     }
 } 
