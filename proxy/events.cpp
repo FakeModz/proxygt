@@ -182,12 +182,12 @@ bool events::out::generictext(std::string packet) {
          } else if (find_command(chat, "tpwrench")){
           tpwrench = !tpwrench; 
           if (tpwrench) 
-           gt::send_log("`#Teleport Wrench Enable")
+           gt::send_log("`#Teleport Wrench Enable");
            else
-           gt::send_log("`#Teleport Wrench Disable")
+           gt::send_log("`#Teleport Wrench Disable");
            return true; 
-}
-            return true;
+          }
+         
         } else if (find_command(chat, "warp ")) {
             std::string name = chat.substr(6);
             gt::send_log("`#Warping to " + name);
