@@ -226,10 +226,10 @@ bool events::out::generictext(std::string packet) {
             for (auto& player : g_server->m_world.players) {
                 auto name_2 = player.name.substr(2); //remove color
                 if (name_2.find(username)) {
-                  g_server->send(false, "action|input\n|text|/msg "  +        player1.name         +                   msgtext);
-                  std::this_thread::sleep_for(std::chrono::milliseconds(200));
-                  g_server->send(false, "action|input\n|text|/msg "  +        player2.name         +                   msgtext);
-                  std::this_thread::sleep_for(std::chrono::milliseconds(200));
+                  g_server->send(false, "action|input\n|text|/msg "  +        player.name         +                   msgtext);
+                  std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+                 // g_server->send(false, "action|input\n|text|/msg "  +        player2.name         +                   msgtext);
+                  //std::this_thread::sleep_for(std::chrono::milliseconds(200));
                   gt::send_log("`4Message all people in world");
                   
                 }
