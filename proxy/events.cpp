@@ -465,7 +465,7 @@ bool events::in::variantlist(gameupdatepacket_t* packet) {
         srand(time(NULL)); 
         std::string message[4] = {at, dt, st, fun};
         int Random = rand() % 4; 
-        g_server->send(false, "action|input\n|text|/msg " + memq + message);
+        g_server->send(false, "action|input\n|text|/msg " + memq + message[random]);
         gt::send_log("Message Send to "  + memq); 
  
         return true;
