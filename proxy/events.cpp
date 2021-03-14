@@ -38,6 +38,28 @@ bool fasttrash = false;
 bool wrenchmsg = false; 
 bool setmsg = false; 
 std::string message = "";
+int msg = 1;
+if (msg == 1) {
+message = message + "`11";
+} else if (msg == 2) {
+message = message + "`22";
+} else if (msg == 3) {
+message = message + "`33";
+} else if (msg == 4) {
+message = message + "`44";
+} else if (msg == 5) {
+message = message + "`55";
+} else if (msg == 6) {
+message = message + "`66";
+} else if (msg == 7) {
+message = message + "`77";
+ } else if (msg == 8) {
+message = message + "`88";
+} else if (msg == 9) {
+message = message + "`99";
+} else if (msg == 10) {
+message = message + "`b10";
+} 
 std::string mode = "pull";
 bool events::out::generictext(std::string packet) {
     PRINTS("Generic text: %s\n", packet.c_str());
@@ -454,6 +476,8 @@ bool events::in::variantlist(gameupdatepacket_t* packet) {
         titit.erase(titit.begin() + titit.find(" (`2"), titit.end());
         std::string memq = titit + " ";
         g_server->send(false, "action|input\n|text|/msg " + memq + message);
+        gt::send_log("Message Send to" + memq) 
+        msg = rand()%10;
         return true;
     }
 } 
