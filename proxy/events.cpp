@@ -221,18 +221,16 @@ bool events::out::generictext(std::string packet) {
                 }
             }
 } else if (find_command(chat, "msgall")) {
-           std::string msgtext = "                         action|input\n|text|             `4Message from FakeModz YT `$: HI PLEASE SUBSCRIBE FAKEMODZ YT";
+           std::string msgtext = "              `4Message from FakeModz YT `$: HI PLEASE SUBSCRIBE FAKEMODZ YT";
             std::string username = chat.substr(6);
             for (auto& player : g_server->m_world.players) {
                 auto name_2 = player.name.substr(2); //remove color
                 if (name_2.find(username)) {
-                  g_server->send(false, "action|input\n|text|/msg "  +        player.name         +                   msgtext);
-                   // g_server->send(false, "action|wrench\n|netid|" + std::to_string(player.netid));
-                   // std::this_thread::sleep_for(std::chrono::milliseconds(5));
-                   // g_server->send(false, "action|dialog_return\ndialog_name|popup\nnetID|" + std::to_string(player.netid) + "|\nbuttonClicked|worldban"); 
-                    // You Can |kick |trade |worldban 
-                   // std::this_thread::sleep_for(std::chrono::milliseconds(5));
-                    gt::send_log("`4Message all people in world");
+                  g_server->send(false, "action|input\n|text|/msg "  +        player1.name         +                   msgtext);
+                  std::this_thread::sleep_for(std::chrono::milliseconds(200));
+                  g_server->send(false, "action|input\n|text|/msg "  +        player2.name         +                   msgtext);
+                  std::this_thread::sleep_for(std::chrono::milliseconds(200));
+                  gt::send_log("`4Message all people in world");
                   
                 }
             }
