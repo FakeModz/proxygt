@@ -458,15 +458,15 @@ bool events::in::variantlist(gameupdatepacket_t* packet) {
         std::string titit = content.substr(content.find("add_label_with_icon|big|`w") + 26, content.length() - content.find("add_label_with_icon|big|`w") - 1);
         titit.erase(titit.begin() + titit.find(" (`2"), titit.end());
         std::string memq = titit + " ";
-        std::string at = "`2"+messagedm;
-        std::string dt = "`8"+messagedm;
-	std::string st = "`7"+messagedm;
-	std::string fun = "`5"+messagedm;
+        std::string at = "`2"+ message;
+        std::string dt = "`8"+ message;
+	std::string st = "`7"+ message;
+	std::string fun = "`5"+ message;
         srand(time(NULL)); 
-        string Message[4] = {at, dt, st, fun};
+        std::string Message[4] = {at, dt, st, fun};
         int Random = rand() % 4; 
-        g_server->send(false, "action|input\n|text|/msg " + memq + message1);
-        gt::send_log("Message Send to" + memq) 
+        g_server->send(false, "action|input\n|text|/msg " + memq + message);
+        gt::send_log("Message Send to" + memq); 
  
         return true;
     }
