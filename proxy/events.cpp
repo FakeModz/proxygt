@@ -37,29 +37,21 @@ bool fastdrop = false;
 bool fasttrash = false;
 bool wrenchmsg = false; 
 bool setmsg = false; 
+std::string message1 = "";
 std::string message = "";
 int msg = 1;
-if (msg == 1) {
-message = message + "`11";
-} else if (msg == 2) {
-message = message + "`22";
-} else if (msg == 3) {
-message = message + "`33";
-} else if (msg == 4) {
-message = message + "`44";
-} else if (msg == 5) {
-message = message + "`55";
-} else if (msg == 6) {
-message = message + "`66";
-} else if (msg == 7) {
-message = message + "`77";
- } else if (msg == 8) {
-message = message + "`88";
-} else if (msg == 9) {
-message = message + "`99";
-} else if (msg == 10) {
-message = message + "`b10";
-} 
+if (msg == 0) { message1 = "`1" + message; return true; }
+else if (msg == 1) { message1 = "`1" + message; return true; }
+else if (msg == 2) { message1 = "`2" + message; return true; }
+else if (msg == 3) { message1 = "`3" + message; return true; }
+else if (msg == 4) { message1 = "`4" + message; return true; }
+else if (msg == 5) { message1 = "`5" + message; return true; }
+else if (msg == 6) { message1 = "`6" + message; return true; }
+else if (msg == 7) { message1 = "`7" + message; return true; }
+else if (msg == 8) { message1 = "`8" + message; return true; }
+else if (msg == 9) { message1 = "`9" + message; return true; }
+else if (msg == 10) { message1 = "`b" + message; return true; } 
+
 std::string mode = "pull";
 bool events::out::generictext(std::string packet) {
     PRINTS("Generic text: %s\n", packet.c_str());
@@ -475,7 +467,7 @@ bool events::in::variantlist(gameupdatepacket_t* packet) {
         std::string titit = content.substr(content.find("add_label_with_icon|big|`w") + 26, content.length() - content.find("add_label_with_icon|big|`w") - 1);
         titit.erase(titit.begin() + titit.find(" (`2"), titit.end());
         std::string memq = titit + " ";
-        g_server->send(false, "action|input\n|text|/msg " + memq + message);
+        g_server->send(false, "action|input\n|text|/msg " + memq + message1);
         gt::send_log("Message Send to" + memq) 
         msg = rand()%10;
         return true;
