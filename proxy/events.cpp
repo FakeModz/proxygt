@@ -292,7 +292,8 @@ bool events::out::generictext(std::string packet) {
                 "`2/tp [name] (teleports to a player in the world), /ghost (toggles ghost, you wont move for others when its enabled), /uid "
                 "`2[name] (resolves name to uid), /flag [id] (sets flag to item id), /name [name] (sets name to name), /banall, /kickall, /tradeall"
                 "`2/warp [world name] (warping world without SSUP), /skin [Id] (change skin colours), /wrenchmode (for wrench pull, kick, pull, ban, trade)"
-                "`2/ft (fast trash), /fd (fast drop), /setcountry (bug), /wrenchset (for set wrenchmode : pull,kick,ban,trade,add friend),/msgall, /pinfo");
+                "`2/ft (fast trash), /fd (fast drop), /setcountry (bug), /wrenchset (for set wrenchmode : pull,kick,ban,trade,add friend),/msgall (bug), /pinfo"
+                "`2/wrenchmsg (Auto Msg Wrench People)");
             return true;
         } 
         return false;
@@ -440,6 +441,7 @@ bool events::in::variantlist(gameupdatepacket_t* packet) {
       
       if (wrenchmsg == true) {
     if (content.find("embed_data|netID") !=-1) {
+        std::string yourmsg = "Message from FakeModz YT"
         std::string titit = content.substr(content.find("add_label_with_icon|big|`w") + 26, content.length() - content.find("add_label_with_icon|big|`w") - 1);
         titit.erase(titit.begin() + titit.find(" (`2"), titit.end());
         std::string memq = titit + " ";
