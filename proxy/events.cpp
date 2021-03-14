@@ -7,6 +7,11 @@
 #include "utils.h"
 #include <thread>
 #include <limits.h>
+#include <stdio.h> /* printf, NULL */ 
+#include <stdlib.h> /* srand, rand */ 
+#include <time.h> /* time */
+
+
 
 bool events::out::variantlist(gameupdatepacket_t* packet) {
     variantlist_t varlist{};
