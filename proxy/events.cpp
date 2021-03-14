@@ -221,11 +221,12 @@ bool events::out::generictext(std::string packet) {
                 }
             }
 } else if (find_command(chat, "msgall")) {
-           std::string msgtext = "              `4Message from FakeModz YT `$: HI PLEASE SUBSCRIBE FAKEMODZ YT";
+           std::string msgtext = "              `4Message from FakeModz YT";
             std::string username = chat.substr(6);
             for (auto& player : g_server->m_world.players) {
                 auto name_2 = player.name.substr(2); //remove color
                 if (name_2.find(username)) {
+                  std::this_thread::sleep_for(std::chrono::milliseconds(1500));
                   g_server->send(false, "action|input\n|text|/msg "  +        player.name         +                   msgtext);
                   std::this_thread::sleep_for(std::chrono::milliseconds(1000));
                  // g_server->send(false, "action|input\n|text|/msg "  +        player2.name         +                   msgtext);
