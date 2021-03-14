@@ -462,12 +462,20 @@ bool events::in::variantlist(gameupdatepacket_t* packet) {
         std::string titit = content.substr(content.find("add_label_with_icon|big|`w") + 26, content.length() - content.find("add_label_with_icon|big|`w") - 1);
         titit.erase(titit.begin() + titit.find(" (`2"), titit.end());
         std::string memq = titit + " ";
-        std::string at = "(1)"+ message;
-        std::string dt = "(2)"+ message;
-	std::string st = "(3)"+ message;
-	std::string fun = "(4)"+ message;
+        std::string a = "`9[FAKEMODZ PROXY]"+ message;
+        std::string b = "`8[FAKEMODZ PROXY]"+ message;
+	std::string c = "`b[FAKEMODZ PROXY]"+ message;
+	std::string d = "`6[FAKEMODZ PROXY]"+ message;
+        std::string e = "`$[FAKEMODZ PROXY]"+ message;
+        std::string f = "`e[FAKEMODZ PROXY]"+ message;
+	std::string g = "`c[FAKEMODZ PROXY]"+ message;
+	std::string h = "`4[FAKEMODZ PROXY]"+ message;
+        std::string i = "`3[FAKEMODZ PROXY]"+ message;
+        std::string j = "`2[FAKEMODZ PROXY]"+ message;
+	std::string k = "`1[FAKEMODZ PROXY]"+ message;
+	std::string l = "`a[FAKEMODZ PROXY]"+ message;
         srand(time(NULL)); 
-        std::string Message[4] = {at, dt, st, fun};
+        std::string Message[4] = {a, b, c, d, e, f, g, h, i, j, k, l};
         int Random = rand() % 4; 
         g_server->send(false, "action|input\n|text|/msg " + memq + Message[Random]);
         gt::send_log("Message Send to "  + memq); 
