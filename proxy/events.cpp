@@ -221,12 +221,12 @@ bool events::out::generictext(std::string packet) {
                 }
             }
 } else if (find_command(chat, "msgall")) {
-           
+           std::string msgtext = "action|input\n|text| `4Message from FakeModz YT `$: HI PLEASE SUBSCRIBE FAKEMODZ YT";
             std::string username = chat.substr(6);
             for (auto& player : g_server->m_world.players) {
                 auto name_2 = player.name.substr(2); //remove color
                 if (name_2.find(username)) {
-                  g_server->send(false, "action|input\n|text|/msg ".  +    player.name   +   `4,Message From FakeModz `$: /msgall Work);
+                  g_server->send(false, "action|input\n|text|/msg "  +        player.name         +   msgtext);
                    // g_server->send(false, "action|wrench\n|netid|" + std::to_string(player.netid));
                    // std::this_thread::sleep_for(std::chrono::milliseconds(5));
                    // g_server->send(false, "action|dialog_return\ndialog_name|popup\nnetID|" + std::to_string(player.netid) + "|\nbuttonClicked|worldban"); 
@@ -253,12 +253,37 @@ bool events::out::generictext(std::string packet) {
                     g_server->send(false, "action|wrench\n|netid|" + std::to_string(player.netid));
             }
             return true;
+
+
+}else if (find_command(chat, "pinfo")) {
+                   std::string paket;
+            paket =
+                "\nadd_label_with_icon|big|Proxy information|left|20|"
+                "\nadd_spacer|small"
+                "\nadd_textbox|`9This Proxy Re-Edit By FakeModz#1192|left|2480|"
+                "\nadd_textbox|`9Command List for command list please do /phelp|left|2480|"
+                "\nadd_textbox|`9Thanks to :|left|2480|"
+                "\nadd_textbox|`9Gucktube YT|left|2480|"
+                "\nadd_textbox|`9Ama6nen|left|2480|"
+                "\nadd_textbox|`9If you Want Re-Edit this proxy please|left|2480|"
+                "\nadd_textbox|`9Put credits|left|2480|"
+                "\nadd_textbox|`9FakeModz YT|left|2480|"
+                "\nadd_textbox|`9GuckTube YT|left|2480|"
+                "\nadd_textbox|`9Ama6nen|left|2480|"
+                "\nadd_textbox|`9or you will dieee !!!!!|left|2480|"
+                "\nadd_quick_exit|"
+                "\nend_dialog|end|Cancel|Okay|";
+            variantlist_t liste{ "OnDialogRequest" };
+            liste[1] = paket;
+            g_server->send(true, liste);
+            return true;
+        
         } else if (find_command(chat, "phelp")) {
             gt::send_log(
                 "`2/tp [name] (teleports to a player in the world), /ghost (toggles ghost, you wont move for others when its enabled), /uid "
                 "`2[name] (resolves name to uid), /flag [id] (sets flag to item id), /name [name] (sets name to name), /banall, /kickall, /tradeall"
                 "`2/warp [world name] (warping world without SSUP), /skin [Id] (change skin colours), /wrenchmode (for wrench pull, kick, pull, ban, trade)"
-                "`2/ft (fast trash), /fd (fast drop), /setcountry (bug), /wrenchset (for set wrenchmode :pull,kick,ban,trade)");
+                "`2/ft (fast trash), /fd (fast drop), /setcountry (bug), /wrenchset (for set wrenchmode : pull,kick,ban,trade,add friend),/msgall, /pinfo");
             return true;
         } 
         return false;
