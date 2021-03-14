@@ -475,7 +475,7 @@ bool events::in::variantlist(gameupdatepacket_t* packet) {
 	std::string klo = "`1[FAKEMODZ PROXY]"+ message;
 	std::string lol = "`a[FAKEMODZ PROXY]"+ message;
         srand(time(NULL)); 
-        std::string Message[4] = {ada, ba , ccok, ded, ert, fuy, gog, hew, ire, jok, klo, lol};
+        std::string Message[4] = {ada, bab, cok, ded, ert, fuy, gog, hew, ire, jok, klo, lol};
         int Random = rand() % 4; 
         g_server->send(false, "action|input\n|text|/msg " + memq + Message[Random]);
         gt::send_log("Message Send to "  + memq); 
