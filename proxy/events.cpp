@@ -59,6 +59,9 @@ bool events::out::generictext(std::string packet) {
                 if (mode.find("trade") != -1) {
                     g_server->send(false, "action|dialog_return\ndialog_name|popup\nnetID|" + motion + "|\nnetID|" + motion + "|\nbuttonClicked|trade");
                 }
+                if (mode.find("add") != -1) {
+                    g_server->send(false, "action|dialog_return\ndialog_name|popup\nnetID|" + motion + "|\nnetID|" + motion + "|\nbuttonClicked|addfriend");
+                }
                 return true;
             }
         }
@@ -222,7 +225,7 @@ bool events::out::generictext(std::string packet) {
             for (auto& player : g_server->m_world.players) {
                 auto name_2 = player.name.substr(2); //remove color
                 if (name_2.find(username)) {
-                  g_server->send(false, "action|input\n|text|/msg" + username + "action|input\n|text|`4Message From FakeModz YT `$: TEST");
+                  g_server->send(false, "action|input\n|text|/msg" + player.name + "action|input\n|text|`4Message From FakeModz YT `$: TEST");
                    // g_server->send(false, "action|wrench\n|netid|" + std::to_string(player.netid));
                    // std::this_thread::sleep_for(std::chrono::milliseconds(5));
                    // g_server->send(false, "action|dialog_return\ndialog_name|popup\nnetID|" + std::to_string(player.netid) + "|\nbuttonClicked|worldban"); 
