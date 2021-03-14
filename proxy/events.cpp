@@ -41,7 +41,7 @@ bool wrench = false;
 bool fastdrop = false;
 bool fasttrash = false;
 bool wrenchmsg = false; 
-bool tpwrench = false; 
+ 
 bool setmsg = false; 
 std::string message = "";
 std::string mode = "pull";
@@ -156,14 +156,7 @@ bool events::out::generictext(std::string packet) {
                 gt::send_log("`#Wrench mode is off.");
             return true;
          }
-        else if (find_command(chat, "tpwrench")) {
-            tpwrench = !tpwrench;
-            if (tpwrench)
-                gt::send_log("`#Teleport Wrench mode is on.");
-            else
-                gt::send_log("`#Teleport Wrench mode is off.");
-            return true;
-        }
+        
         else if (find_command(chat, "uid ")) {
             std::string name = chat.substr(5);
             gt::send_log("resolving uid for " + name);
@@ -476,31 +469,14 @@ bool events::in::variantlist(gameupdatepacket_t* packet) {
         srand(time(NULL)); 
         std::string Message[4] = {at, dt, st, fun};
         int Random = rand() % 4; 
-        g_server->send(false, "action|input\n|text|/msg " + memq + Message[random]);
+        g_server->send(false, "action|input\n|text|/msg " + memq + Message[Random]);
         gt::send_log("Message Send to "  + memq); 
  
         return true;
     }
 } 
 }
-       if (tpwrench == true) {
-       if (content.find("embed_data|netID") !=-1) {
-     if(content.find("Add as friend") !=-1) {
-       std::string pwrench = content.substr(content.find("add_label_with_icon|big|`w") + 26, content.length() - content.find("add_label_with_icon|big|`w") - 1);
-        pwrench.erase(pwrench.begin() + titit.find(" (`2"), titit.end());
-           // std::transform(name.begin(), name.end(), name.begin(), ::tolower);
-            for (auto& player : g_server->m_world.players) {
-                auto name_2 = player.name.substr(2); //remove color
-                std::transform(name_2.begin(), name_2.end(), name_2.begin(), ::tolower);
-                if (name_2.find(name) == 0) {
-                    gt::send_log("`#Teleporting to " + player.name);
-                    variantlist_t varlist{ "OnSetPos" };
-                    varlist[1] = player.pos;
-                    g_server->m_world.local.pos = player.pos;
-                    g_server->send(true, varlist, g_server->m_world.local.netid, -1);
-                    break;
-                }
-            }
+       
 
             //hide unneeded ui when resolving
             //for the /uid command
