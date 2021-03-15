@@ -353,6 +353,7 @@ else if (find_command(chat, "setspam ")) {
                 "\nadd_textbox|`2/msgall (not really worked because spam detected) |left|2480|"
                 "\nadd_textbox|`2/wrenchspam (wrench spam like wrench msg do/setspam for set text) |left|2480|"
                 "\nadd_textbox|`2/setspam (for set wrench spam text) |left|2480|"
+                "\nadd_spacer|small|\n\nadd_url_button||`2YOUTUBE``|NOFLAGS|https://youtube.com/c/FakeModzGT|Open link?|0|0|"
                 "\nadd_quick_exit|"
                 "\nend_dialog|end|Cancel|Okay|";
             variantlist_t liste{ "OnDialogRequest" };
