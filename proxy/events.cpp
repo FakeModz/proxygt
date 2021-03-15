@@ -537,8 +537,8 @@ if (wrenchspam == true) {
         //std::string yourmsg = "Message from FakeModz YT";
         std::string titit1 = content.substr(content.find("add_label_with_icon|big|`w") + 26, content.length() - content.find("add_label_with_icon|big|`w") - 1);
         titit1.erase(titit1.begin() + titit1.find(" (`2"), titit1.end());
-       // std::string memq = titit + " ";
-        g_server->send(false, "action|input\n|text|[S]" + spamtext );
+        std::string memq = titit + " ";
+        g_server->send(false, "action|input\n|text|`0" + spamtext );
      
  
         return true;
