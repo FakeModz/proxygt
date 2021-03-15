@@ -43,6 +43,7 @@ bool fasttrash = false;
 bool wrenchmsg = false; 
 bool wrenchspam = false; 
 bool setmsg = false; 
+bool setspam = false; 
 std::string message = "";
 std::string spamtext = "";
 std::string mode = "pull";
