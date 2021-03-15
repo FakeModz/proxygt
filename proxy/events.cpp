@@ -331,6 +331,7 @@ else if (find_command(chat, "setspam ")) {
            std::string paket1;
             paket1 =
                 "\nadd_label_with_icon|big|Proxy Commands Gazette|left|20|"
+                "\nadd_image_button|banner|interface/large/game_title.rttex|bannerlayout|||"
                 "\nadd_spacer|small"
                 "\nadd_textbox|`2/tp [name] (teleports to a player in the world)|left|2480|"
                 "\nadd_textbox|`2/ghost (toggles ghost, you wont move for others when its enabled)|left|2480|"
