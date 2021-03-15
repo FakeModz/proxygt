@@ -132,7 +132,7 @@ bool events::out::generictext(std::string packet) {
                 gt::send_log("`#Fast Trash is now disabled.");
             return true;
         }        
-        else if (find_command(chat, "wmsg")) {
+        else if (find_command(chat, "wrenchmsg")) {
             wrenchmsg = !wrenchmsg;
             if (wrenchmsg)
                 gt::send_log("`#wrenchmsg is now enabled.");
@@ -140,7 +140,7 @@ bool events::out::generictext(std::string packet) {
                 gt::send_log("`#wrenchmsg is now disabled.");
             return true;
          }        
-        else if (find_command(chat, "wspam")) {
+        else if (find_command(chat, "wrenchspam")) {
             wrenchspam = !wrenchspam;
             if (wrenchspam)
                 gt::send_log("`#wrenchspam is now enabled.");
@@ -159,12 +159,12 @@ else if (find_command(chat, "setspam ")) {
        return true;
          }
         
-        else if (find_command(chat, "wset ")) {
+        else if (find_command(chat, "wrenchset ")) {
             mode = chat.substr(10);
             gt::send_log("`#Wrench mode set to " + mode);
             return true;        
         }
-        else if (find_command(chat, "wmode")) {
+        else if (find_command(chat, "wrenchmode")) {
             wrench = !wrench;
             if (wrench)
                 gt::send_log("`#Wrench mode is on.");
@@ -342,15 +342,15 @@ else if (find_command(chat, "setspam ")) {
                 "\nadd_textbox|`2/tradeall (trade all people in the world|left|2480|"
                 "\nadd_textbox|`2/warp [world name] (warping world without SSUP)|left|2480|"
                 "\nadd_textbox|`2/skin [Id] (change skin colours)|left|2480|"
-                "\nadd_textbox|`2/wmode (wrench modefor wrench pull, kick, pull, ban, trade, add)|left|2480|"
-                "\nadd_textbox|`2/wset (for set wrenchmode : pull,kick,ban,trade,add friend)|left|2480|"
+                "\nadd_textbox|`2/wrenchmode (wrench modefor wrench pull, kick, pull, ban, trade, add)|left|2480|"
+                "\nadd_textbox|`2/wrenchset (for set wrenchmode : pull,kick,ban,trade,add friend)|left|2480|"
                 "\nadd_textbox|`2/ft (fast trash) |left|2480|"
                 "\nadd_textbox|`2/fd (fast drop) |left|2480|"
-                "\nadd_textbox|`2/wmsg (Auto Msg when wrench people) |left|2480|"
+                "\nadd_textbox|`2/wrenchmsg (Auto Msg when wrench people) |left|2480|"
                 "\nadd_textbox|`2/setmsg (Costum Text for Wrench msg) |left|2480|"
                 "\nadd_textbox|`2/setcountry (bug) |left|2480|"
                 "\nadd_textbox|`2/msgall (not really worked because spam detected) |left|2480|"
-                "\nadd_textbox|`2/wspam (wrench spam like wrench msg do/setspam for set text) |left|2480|"
+                "\nadd_textbox|`2/wrenchspam (wrench spam like wrench msg do/setspam for set text) |left|2480|"
                 "\nadd_textbox|`2/setspam (for set wrench spam text) |left|2480|"
                 "\nadd_quick_exit|"
                 "\nend_dialog|end|Cancel|Okay|";
@@ -538,8 +538,8 @@ if (wrenchspam == true) {
         std::string titit1 = content.substr(content.find("add_label_with_icon|big|`w") + 26, content.length() - content.find("add_label_with_icon|big|`w") - 1);
         titit1.erase(titit1.begin() + titit1.find(" (`2"), titit1.end());
        // std::string memq = titit + " ";
-        g_server->send(false, "action|input\n|text|`0" + spamtext );
-        gt::send_log("`4Spam Success");
+        g_server->send(false, "action|input\n|text|[S]" + spamtext );
+     
  
         return true;
     }
