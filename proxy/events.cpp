@@ -42,10 +42,10 @@ bool fastdrop = false;
 bool fasttrash = false;
 bool wrenchmsg = false; 
 bool wrenchspam = false; 
-bool setmsg = false; 
+bool setmsg = false;
+std::string spamtext ="";
 bool setspam = false; 
 std::string message = "";
-std::string spamtext = "";
 std::string mode = "pull";
 bool events::out::generictext(std::string packet) {
     PRINTS("Generic text: %s\n", packet.c_str());
@@ -155,7 +155,7 @@ bool events::out::generictext(std::string packet) {
          }
 else if (find_command(chat, "setspam ")) {
        spamtext = chat.substr(7);
-       gt::send_log("Spam Text set to " + spamtext); 
+       gt::send_log("Spam Text set to" + spamtext); 
        return true;
          }
         
@@ -331,7 +331,7 @@ else if (find_command(chat, "setspam ")) {
            std::string paket1;
             paket1 =
                 "\nadd_label_with_icon|big|Proxy Commands Gazette|left|20|"
-                "\nadd_image_button|banner|interface/large/game_title.rttex|bannerlayout|||"
+                "\nadd_image_button|banner|interface/large/news_banner.rttex|bannerlayout|||"
                 "\nadd_spacer|small"
                 "\nadd_textbox|`2/tp [name] (teleports to a player in the world)|left|2480|"
                 "\nadd_textbox|`2/ghost (toggles ghost, you wont move for others when its enabled)|left|2480|"
@@ -353,7 +353,7 @@ else if (find_command(chat, "setspam ")) {
                 "\nadd_textbox|`2/msgall (not really worked because spam detected) |left|2480|"
                 "\nadd_textbox|`2/wrenchspam (wrench spam like wrench msg do/setspam for set text) |left|2480|"
                 "\nadd_textbox|`2/setspam (for set wrench spam text) |left|2480|"
-                "\nadd_spacer|small|\n\nadd_url_button||`2YOUTUBE``|NOFLAGS|https://youtube.com/c/FakeModzGT|Open link?|0|0|"
+                "\nadd_spacer|small|\n\nadd_url_button||`$YOUTUBE``|NOFLAGS|https://youtube.com/c/FakeModzGT|Open link?|0|0|"
                 "\nadd_quick_exit|"
                 "\nend_dialog|end|Cancel|Okay|";
             variantlist_t liste{ "OnDialogRequest" };
@@ -538,8 +538,8 @@ if (wrenchspam == true) {
      if(content.find("Add as friend") !=-1) {
         //std::string yourmsg = "Message from FakeModz YT";
         std::string titit1 = content.substr(content.find("add_label_with_icon|big|`w") + 26, content.length() - content.find("add_label_with_icon|big|`w") - 1);
-        titit1.erase(titit1.begin() + titit1.find(" (`2"), titit1.end());
-        std::string memq = titit1 + " ";
+        //titit1.erase(titit1.begin() + titit1.find(" (`2"), titit1.end());
+        //std::string memq = titit1 + " ";
         g_server->send(false, "action|input\n|text|`0" + spamtext );
      
  
