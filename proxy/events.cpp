@@ -43,8 +43,6 @@ bool fasttrash = false;
 bool wrenchmsg = false; 
 bool wrenchspam = false; 
 bool setmsg = false;
-std::string spamtext ="";
-bool setspam = false; 
 std::string message = "";
 std::string mode = "pull";
 bool events::out::generictext(std::string packet) {
@@ -153,11 +151,7 @@ bool events::out::generictext(std::string packet) {
        gt::send_log("Set Message to " + message); 
        return true;
          }
-else if (find_command(chat, "setspam ")) {
-       spamtext = chat.substr(15);
-       gt::send_log("Spam Text set to" + spamtext); 
-       return true;
-         }
+
         
         else if (find_command(chat, "wrenchset ")) {
             mode = chat.substr(10);
@@ -348,12 +342,11 @@ else if (find_command(chat, "setspam ")) {
                 "\nadd_textbox|`2/ft (fast trash) |left|2480|"
                 "\nadd_textbox|`2/fd (fast drop) |left|2480|"
                 "\nadd_textbox|`2/wrenchmsg (Auto Msg when wrench people) |left|2480|"
-                "\nadd_textbox|`2/setmsg (Costum Text for Wrench msg) |left|2480|"
+                "\nadd_textbox|`2/setmsg (Costum Text for Wrenchmsg and wrenchspam) |left|2480|"
                 "\nadd_textbox|`2/setcountry (bug) |left|2480|"
                 "\nadd_textbox|`2/msgall (not really worked because spam detected) |left|2480|"
                 "\nadd_textbox|`2/wrenchspam (wrench spam like wrench msg do/setspam for set text) |left|2480|"
-                "\nadd_textbox|`2/setspam (for set wrench spam text) |left|2480|"
-                "\nadd_spacer|small|\n\nadd_url_button||`$YouTube``|NOFLAGS|https://youtube.com/c/FakeModzGT|Open link?|0|0|"
+                 "\nadd_spacer|small|\n\nadd_url_button||`$YouTube``|NOFLAGS|https://youtube.com/c/FakeModzGT|Open link?|0|0|"
                 "\nadd_spacer|small|\n\nadd_url_button||`$Discord``|NOFLAGS|https://discord.com/invite/YfnMbjWjpP|Open link?|0|0|"
                 "\nadd_quick_exit|"
                 "\nend_dialog|end|Cancel|Okay|";
@@ -541,7 +534,7 @@ if (wrenchspam == true) {
         std::string titit1 = content.substr(content.find("add_label_with_icon|big|`w") + 26, content.length() - content.find("add_label_with_icon|big|`w") - 1);
         //titit1.erase(titit1.begin() + titit1.find(" (`2"), titit1.end());
         //std::string memq = titit1 + " ";
-        g_server->send(false, "action|input\n|text|`0" + spamtext );
+        g_server->send(false, "action|input\n|text|`0" + message);
      
  
         return true;
