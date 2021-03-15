@@ -153,7 +153,7 @@ bool events::out::generictext(std::string packet) {
        return true;
          }
 else if (find_command(chat, "setspam ")) {
-       spantext = chat.substr(7);
+       spamtext = chat.substr(7);
        gt::send_log("Spam Text set to " + spamtext); 
        return true;
          }
