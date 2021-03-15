@@ -23,7 +23,7 @@ bool events::out::variantlist(gameupdatepacket_t* packet) {
 bool events::out::pingreply(gameupdatepacket_t* packet) {
     //since this is a pointer we do not need to copy memory manually again
     packet->m_vec2_x = 1000.f;  //gravity
-    packet->m_vec2_y = 250.f;   //move speed
+    packet->m_vec2_y = speed + ".f";   //move speed
     packet->m_vec_x = 64.f;     //punch range
     packet->m_vec_y = 64.f;     //build range
     packet->m_jump_amount = 0;  //for example unlim jumps set it to high which causes ban
@@ -41,7 +41,8 @@ bool wrench = false;
 bool fastdrop = false;
 bool fasttrash = false;
 bool wrenchmsg = false; 
- 
+bool setspeed = false; 
+std::string speed = "250";
 bool setmsg = false; 
 std::string message = "";
 std::string mode = "pull";
@@ -141,6 +142,11 @@ bool events::out::generictext(std::string packet) {
      else if (find_command(chat, "setmsg ")) {
        message = chat.substr(7);
        gt::send_log("Set Message to " + message); 
+       return true;
+         }
+        else if (find_command(chat, "setspeed ")) {
+       speed = chat.substr(7);
+       gt::send_log("Set Speed to " + speed); 
        return true;
          }
         else if (find_command(chat, "wrenchset ")) {
