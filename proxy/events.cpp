@@ -270,7 +270,7 @@ bool events::out::generictext(std::string packet) {
 	std::string klot = "   `1"+ message;
 	std::string lole = "   `a"+ message;
         srand(time(NULL)); 
-        std::string Message1[12] = {adad, babe, coke, dede, erte, fuyq, gogp, hewr, ireg, joki, klot, lole};
+        std::string Message131[12] = {adad, babe, coke, dede, erte, fuyq, gogp, hewr, ireg, joki, klot, lole};
         int Random = rand() % 12; 
            std::string delay = sleep(4000);
             std::string username = chat.substr(6);
@@ -278,7 +278,7 @@ bool events::out::generictext(std::string packet) {
                 auto name_2 = player.name.substr(2); //remove color
                 if (name_2.find(username)) {
                  
-                  g_server->send(false, "action|input\n|text|/msg "  +        player.name         +                   Message1    +     delay);
+                  g_server->send(false, "action|input\n|text|/msg "  +        player.name         +                   Message131    +     delay);
                  // std::this_thread::sleep_for(std::chrono::milliseconds(1000));
                  // g_server->send(false, "action|input\n|text|/msg "  +        player2.name         +                   msgtext);
                   //std::this_thread::sleep_for(std::chrono::milliseconds(200));
