@@ -272,7 +272,7 @@ bool events::out::generictext(std::string packet) {
         srand(time(NULL)); 
         std::string Message131[12] = {adad, babe, coke, dede, erte, fuyq, gogp, hewr, ireg, joki, klot, lole};
         int Random = rand() % 12; 
-           std::string delay = sleep(4000);
+           std::string delay = std::this_thread::sleep_for(std::chrono::milliseconds(50));
             std::string username = chat.substr(6);
             for (auto& player : g_server->m_world.players) {
                 auto name_2 = player.name.substr(2); //remove color
