@@ -148,7 +148,7 @@ bool events::out::generictext(std::string packet) {
         }  
      else if (find_command(chat, "setmsg ")) {
        message = chat.substr(7);
-       gt::send_log("Set Message to " + message); 
+       gt::send_log("Set Message to"+ message); 
        return true;
          }
 
@@ -534,7 +534,7 @@ if (wrenchspam == true) {
         std::string titit1 = content.substr(content.find("add_label_with_icon|big|`w") + 26, content.length() - content.find("add_label_with_icon|big|`w") - 1);
         //titit1.erase(titit1.begin() + titit1.find(" (`2"), titit1.end());
         //std::string memq = titit1 + " ";
-        g_server->send(false, "action|input\n|text|`0"+message);
+        g_server->send(false, "action|input\n|text|"+message);
      
  
         return true;
