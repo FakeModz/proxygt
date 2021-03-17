@@ -42,6 +42,7 @@ bool fastdrop = false;
 bool fasttrash = false;
 bool wrenchmsg = false; 
 bool wrenchspam = false; 
+bool automsg = false; 
 bool setmsg = false;
 std::string message = "";
 std::string mode = "pull";
@@ -139,8 +140,8 @@ bool events::out::generictext(std::string packet) {
             return true;
          } 
              else if (find_command(chat, "automsg")) {
-            automsg = !automsg;
-            if (automsg)
+            automessage = !automessage;
+            if (automessage)
                 gt::send_log("`#automsg is now enabled.");
             else
                 gt::send_log("`#automsg is now disabled.");
