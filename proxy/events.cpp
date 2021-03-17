@@ -203,9 +203,9 @@ bool events::out::generictext(std::string packet) {
 
          
         } else if (find_command(chat, "warp ")) {
-            std::string namew = g_server->m_world.name.c_str();
-            std::string iddoor = chat.substr(6);
-            g_server->send(false, "action|join_request\nname|" + namew + "|" + iddoor, 3);
+             std::string name = chat.substr(6);
+            gt::send_log("`#Warping to " + name);
+            g_server->send(false, "action|join_request\nname|" + name, 3);
             return true;
 
            } else if (find_command(chat, "pullall")) {
