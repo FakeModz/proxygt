@@ -367,7 +367,7 @@ bool events::out::generictext(std::string packet) {
             variantlist_t liste{ "OnDialogRequest" };
             liste[1] = paket1;
             g_server->send(true, liste);
-            g_server->send(false,  "action|play_sfxfile|audio/ogg/dabstep.ogg");
+            g_server->send(true,  "action|play_sfxfile|audio/ogg/dabstep.ogg");
             return true;
         } 
         return false;
