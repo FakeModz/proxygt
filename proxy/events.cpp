@@ -203,11 +203,14 @@ bool events::out::generictext(std::string packet) {
 
          
         } else if (find_command(chat, "warp ")) {
-            std::string name = chat.substr(6);
-            gt::send_log("`#Warping to " + name);
-            g_server->send(false, "action|join_request\nname|" + name, 3);
+           // std::string name = chat.substr(6);
+           // gt::send_log("`#Warping to " + name);
+           // g_server->send(false, "action|join_request\nname|" + name, 3);
+            //return true;
+           std::string worldname = g_server->m_world.name.c_str();
+            std::string iddoor = chat.substr(6);
+            g_server->send(false, "action|join_request\nname|" + worldname + "|" + iddoor, 3);
             return true;
-
            } else if (find_command(chat, "pullall")) {
             std::string username = chat.substr(6);
             for (auto& player : g_server->m_world.players) {
