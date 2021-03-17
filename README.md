@@ -1,9 +1,5 @@
 # Growtopia enet proxy edited by FakeModz#1192
-*if you want Re-edit put credits :
-ama6nen
-GuckkTubeYT
-FakeModz YT
-or die!!!!!! 
+*if you want Re-Edit this proxy please dont delete credits 
 
 ## Don't add me in discord for help with compiling/adding feature/some simple thing with proxy or you will get instantly blocked
 
