@@ -646,12 +646,12 @@ if (wrenchspam == true) {
                 PRINTC("new: %s\n", varlist.print().c_str());
                 g_server->send(true, varlist, -1, -1);
                 if (automsg == true) {
-                    std::string joker = "`2"+ message;
-	            std::string klor = "`9"+ message;
-	            std::string loler = "`c"+ message;
-                    srand(time(NULL)); 
-                    std::string Message33[3] = {joker, klor, loler};
-                    int Random10 = rand() % 3;
+                   // std::string joker = "`2"+ message;
+	            //std::string klor = "`9"+ message;
+	           // std::string loler = "`c"+ message;
+                    //srand(time(NULL)); 
+                    //std::string Message33[3] = {joker, klor, loler};
+                  //  int Random10 = rand() % 3;
                         std::this_thread::sleep_for(std::chrono::milliseconds(50));
                         g_server->send(false, "action|input\n|text|/msg " + ply.name + Message33[Random10]);
                 return true;
@@ -724,4 +724,4 @@ bool events::in::tracking(std::string packet) {
     PRINTC("Tracking packet: %s\n", packet.c_str());
     return true;
 }
-}
+
