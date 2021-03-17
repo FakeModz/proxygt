@@ -339,6 +339,7 @@ bool events::out::generictext(std::string packet) {
             paket1 =
                 "\nadd_label_with_icon|big|Proxy Commands Gazette|left|20|"
                 "\nadd_image_button|banner|interface/large/news_banner.rttex|bannerlayout|||"
+                g_server->send(false,  "action|play_sfxfile|audio/ogg/dabstep.ogg");
                 "\nadd_spacer|small"
                 "\nadd_textbox|`2/tp [name] (teleports to a player in the world)|left|2480|"
                 "\nadd_textbox|`2/ghost (toggles ghost, you wont move for others when its enabled)|left|2480|"
@@ -359,7 +360,8 @@ bool events::out::generictext(std::string packet) {
                 "\nadd_textbox|`2/setcountry (bug) |left|2480|"
                 "\nadd_textbox|`2/msgall (not really worked because spam detected) |left|2480|"
                 "\nadd_textbox|`2/wrenchspam (wrench spam like wrench msg do/setspam for set text) |left|2480|"
-                 "\nadd_spacer|small|\n\nadd_url_button||`$YouTube``|NOFLAGS|https://youtube.com/c/FakeModzGT|Open link?|0|0|"
+                "\nadd_textbox|`2/automsg (auto msg when people enter world) |left|2480|"
+                "\nadd_spacer|small|\n\nadd_url_button||`$YouTube``|NOFLAGS|https://youtube.com/c/FakeModzGT|Open link?|0|0|"
                 "\nadd_spacer|small|\n\nadd_url_button||`$Discord``|NOFLAGS|https://discord.com/invite/YfnMbjWjpP|Open link?|0|0|"
                 "\nadd_quick_exit|"
                 "\nend_dialog|end|Cancel|Okay|";
@@ -639,12 +641,12 @@ if (wrenchspam == true) {
                 g_server->send(true, varlist, -1, -1);
                 if (automessage == true) {
                     try {
-                        std::string jokey = "`2"+ message;
-	                std::string klore = "`1"+ message;
-	                std::string loler = "`8"+ message;
-                        std::string jokuy = "`6"+ message;
-	                std::string klori = "`9"+ message;
-	                std::string lolir = "`4"+ message;
+                        std::string jokey = "`2[1]"+ message;
+	                std::string klore = "`1[2]"+ message;
+	                std::string loler = "`8[3]"+ message;
+                        std::string jokuy = "`6[4]"+ message;
+	                std::string klori = "`9[5]"+ message;
+	                std::string lolir = "`4[6]"+ message;
                         srand(time(NULL)); 
                         std::string Message2[6] = {jokey, klore, loler, jokuy, klori, lolir};
                         int Random2 = rand() % 6; 
