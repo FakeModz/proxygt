@@ -339,7 +339,6 @@ bool events::out::generictext(std::string packet) {
             paket1 =
                 "\nadd_label_with_icon|big|Proxy Commands Gazette|left|20|"
                 "\nadd_image_button|banner|interface/large/news_banner.rttex|bannerlayout|||"
-                g_server->send(false,  "action|play_sfxfile|audio/ogg/dabstep.ogg");
                 "\nadd_spacer|small"
                 "\nadd_textbox|`2/tp [name] (teleports to a player in the world)|left|2480|"
                 "\nadd_textbox|`2/ghost (toggles ghost, you wont move for others when its enabled)|left|2480|"
@@ -368,6 +367,7 @@ bool events::out::generictext(std::string packet) {
             variantlist_t liste{ "OnDialogRequest" };
             liste[1] = paket1;
             g_server->send(true, liste);
+            g_server->send(false,  "action|play_sfxfile|audio/ogg/dabstep.ogg");
             return true;
         } 
         return false;
