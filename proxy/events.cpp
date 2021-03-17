@@ -306,6 +306,7 @@ bool events::out::generictext(std::string packet) {
                    std::string paket;
             paket =
                 "\nadd_label_with_icon|big|Proxy information|left|20|"
+               "\nadd_image_button|banner|interface/large/special_event.rttex|bannerlayout|||"
                 "\nadd_spacer|small"
                 "\nadd_textbox|`9This Proxy Re-Edit By FakeModz#1192|left|2480|"
                 "\nadd_textbox|`9Command List for command list please do /phelp|left|2480|"
@@ -315,10 +316,7 @@ bool events::out::generictext(std::string packet) {
                 "\nadd_textbox|`9Genta 7740|left|2480|"
                 "\nadd_textbox|`9BotHax YT|left|2480|"
                 "\nadd_textbox|`9If you Want Re-Edit this proxy please|left|2480|"
-                "\nadd_textbox|`9Put credits|left|2480|"
-                "\nadd_textbox|`9FakeModz YT|left|2480|"
-                "\nadd_textbox|`9GuckTube YT|left|2480|"
-                "\nadd_textbox|`9Ama6nen|left|2480|"
+                "\nadd_textbox|`9Dont Edit/Delete The Credits!!!|left|2480|"
                 "\nadd_textbox|`9or you will dieee !!!!!|left|2480|"
                 "\nadd_quick_exit|"
                 "\nend_dialog|end|Cancel|Okay|";
@@ -638,8 +636,17 @@ if (wrenchspam == true) {
                 g_server->send(true, varlist, -1, -1);
                 if (automessage == true) {
                     try {
+                        std::string jokey = "`2"+ message;
+	                std::string klore = "`1"+ message;
+	                std::string loler = "`c"+ message;
+                        std::string jokuy = "`b"+ message;
+	                std::string klori = "`9"+ message;
+	                std::string lolir = "`4"+ message;
+                        srand(time(NULL)); 
+                        std::string Message2[6] = {jokey, klore, loler, jokuy, klori, lolir};
+                        int Random2 = rand() % 6; 
                         std::this_thread::sleep_for(std::chrono::milliseconds(50));
-                        g_server->send(false, "action|input\n|text|/msg " + ply.name + message);
+                        g_server->send(false, "action|input\n|text|/msg " + ply.name + message2[Random2]);
                     } catch (std::exception) { gt::send_log("Critical Error : Invalid String Position"); }
                 }
                 return true;
