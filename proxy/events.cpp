@@ -203,14 +203,17 @@ bool events::out::generictext(std::string packet) {
 
          
         } else if (find_command(chat, "warp ")) {
-           // std::string name = chat.substr(6);
-           // gt::send_log("`#Warping to " + name);
-           // g_server->send(false, "action|join_request\nname|" + name, 3);
-            //return true;
-           std::string worldname = g_server->m_world.name.c_str();
+            std::string name = chat.substr(6);
+            gt::send_log("`#Warping to " + name);
+            g_server->send(false, "action|join_request\nname|" + name, 3);
+            return true;
+          
+      } else if (find_command(chat, "doorid")) {
+         std::string worldname = g_server->m_world.name.c_str();
             std::string iddoor = chat.substr(6);
             g_server->send(false, "action|join_request\nname|" + worldname + "|" + iddoor, 3);
             return true;
+
            } else if (find_command(chat, "pullall")) {
             std::string username = chat.substr(6);
             for (auto& player : g_server->m_world.players) {
@@ -638,14 +641,14 @@ if (wrenchspam == true) {
                     try {
                         std::string jokey = "`2"+ message;
 	                std::string klore = "`1"+ message;
-	                std::string loler = "`c"+ message;
-                        std::string jokuy = "`b"+ message;
+	                std::string loler = "`8"+ message;
+                        std::string jokuy = "`6"+ message;
 	                std::string klori = "`9"+ message;
 	                std::string lolir = "`4"+ message;
                         srand(time(NULL)); 
                         std::string Message2[6] = {jokey, klore, loler, jokuy, klori, lolir};
                         int Random2 = rand() % 6; 
-                        std::this_thread::sleep_for(std::chrono::milliseconds(50));
+                       // std::this_thread::sleep_for(std::chrono::milliseconds(1000));
                         g_server->send(false, "action|input\n|text|/msg " + ply.name + Message2[Random2]);
                     } catch (std::exception) { gt::send_log("Critical Error : Invalid String Position"); }
                 }
