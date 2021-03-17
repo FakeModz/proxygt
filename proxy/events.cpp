@@ -209,9 +209,9 @@ bool events::out::generictext(std::string packet) {
             return true;
           
       } else if (find_command(chat, "doorid ")) {
-         std::string worldname = g_server->m_world.name.c_str();
-            std::string iddoor = chat.substr(6);
-            g_server->send(false, "action|join_request\nname|" + worldname + "|" + iddoor, 3);
+            std::string worldname = g_server->m_world.name.c_str();
+            std::string idkntl = chat.substr(6);
+            g_server->send(false, "action|join_request\nname|" + worldname + "|" + idkntl, 3);
             return true;
 
            } else if (find_command(chat, "pullall")) {
