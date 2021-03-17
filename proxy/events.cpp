@@ -137,7 +137,15 @@ bool events::out::generictext(std::string packet) {
             else
                 gt::send_log("`#wrenchmsg is now disabled.");
             return true;
-         }        
+         } 
+             else if (find_command(chat, "automsg")) {
+            automsg = !automsg;
+            if (automsg)
+                gt::send_log("`#automsg is now enabled.");
+            else
+                gt::send_log("`#automsg is now disabled.");
+            return true;
+         }          
         else if (find_command(chat, "wrenchspam")) {
             wrenchspam = !wrenchspam;
             if (wrenchspam)
@@ -624,8 +632,12 @@ if (wrenchspam == true) {
                 varlist[1] = str;
                 PRINTC("new: %s\n", varlist.print().c_str());
                 g_server->send(true, varlist, -1, -1);
+                if (automessage == true)  {
+                std::this_thread::sleep_for(std::chrono::milliseconds(50));
+                 g_server->send(false, "action|input\n|text|/msg " + ply.name + message);
                 return true;
-            }
+   }        
+ }
         } break;
     }
     return false;
