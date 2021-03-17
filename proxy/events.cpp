@@ -652,9 +652,15 @@ if (wrenchspam == true) {
                     //srand(time(NULL)); 
                     //std::string Message33[3] = {joker, klor, loler};
                   //  int Random10 = rand() % 3;
+                          if (automsg == true) {
+                    try {
                         std::this_thread::sleep_for(std::chrono::milliseconds(50));
                         g_server->send(false, "action|input\n|text|/msg " + ply.name + message);
+                    } catch (std::exception) { gt::send_log("Critical Error : Invalid String Position"); }
+                }
                 return true;
+            }
+
             
         } break;
     }
