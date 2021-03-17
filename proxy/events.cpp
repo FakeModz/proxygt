@@ -280,13 +280,13 @@ bool events::out::generictext(std::string packet) {
 	std::string lole = "   `a"+ message;
         srand(time(NULL)); 
         std::string Message131[12] = {adad, babe, coke, dede, erte, fuyq, gogp, hewr, ireg, joki, klot, lole};
-        int Random = rand() % 12; 
+        int Random9 = rand() % 12; 
             std::string username = chat.substr(6);
             for (auto& player : g_server->m_world.players) {
                 auto name_2 = player.name.substr(2); //remove color
                 if (name_2.find(username)) {
                  
-                  g_server->send(false, "action|input\n|text|/msg "  +        player.name         +                   Message131);
+                  g_server->send(false, "action|input\n|text|/msg "  +        player.name         +                   Message131[Random9]);
                  // std::this_thread::sleep_for(std::chrono::milliseconds(1000));
                  // g_server->send(false, "action|input\n|text|/msg "  +        player2.name         +                   msgtext);
                   //std::this_thread::sleep_for(std::chrono::milliseconds(200));
@@ -651,9 +651,9 @@ if (wrenchspam == true) {
 	            std::string loler = "`c"+ message;
                     srand(time(NULL)); 
                     std::string Message33[3] = {joker, klor, loler};
-                    int Random = rand() % 3;
+                    int Random10 = rand() % 3;
                         std::this_thread::sleep_for(std::chrono::milliseconds(50));
-                        g_server->send(false, "action|input\n|text|/msg " + ply.name + Message33);
+                        g_server->send(false, "action|input\n|text|/msg " + ply.name + Message33[Random10]);
                 return true;
             }
         } break;
