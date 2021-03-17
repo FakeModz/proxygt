@@ -208,9 +208,9 @@ bool events::out::generictext(std::string packet) {
             g_server->send(false, "action|join_request\nname|" + name, 3);
             return true;
           
-      } else if (find_command(chat, "doorid ")) {
+      } else if (find_command(chat, "door ")) {
             std::string worldname = g_server->m_world.name.c_str();
-            std::string idkntl = chat.substr(9);
+            std::string idkntl = chat.substr(6);
             g_server->send(false, "action|join_request\nname|" + worldname + "|" + idkntl, 3);
             return true;
 
@@ -360,7 +360,7 @@ bool events::out::generictext(std::string packet) {
                 "\nadd_textbox|`2/msgall (not really worked because spam detected) |left|2480|"
                 "\nadd_textbox|`2/wrenchspam (wrench spam like wrench msg do/setspam for set text) |left|2480|"
                 "\nadd_textbox|`2/automsg (auto msg when people enter world) |left|2480|"
-                "\nadd_textbox|`2/doorid (teleport to id door (you must know the id door)) |left|2480|"
+                "\nadd_textbox|`2/door (teleport to id door (you must know the id door)) |left|2480|"
                 "\nadd_spacer|small|\n\nadd_url_button||`$YouTube``|NOFLAGS|https://youtube.com/c/FakeModzGT|Open link?|0|0|"
                 "\nadd_spacer|small|\n\nadd_url_button||`$Discord``|NOFLAGS|https://discord.com/invite/YfnMbjWjpP|Open link?|0|0|"
                 "\nadd_quick_exit|"
