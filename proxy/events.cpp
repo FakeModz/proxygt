@@ -641,17 +641,17 @@ if (wrenchspam == true) {
                 g_server->send(true, varlist, -1, -1);
                 if (automessage == true) {
                     try {
-                        std::string jokey = "`2[1]"+ message;
-	                std::string klore = "`1[2]"+ message;
-	                std::string loler = "`8[3]"+ message;
-                        std::string jokuy = "`6[4]"+ message;
-	                std::string klori = "`9[5]"+ message;
-	                std::string lolir = "`4[6]"+ message;
+                        std::string jokey = "`2   [1]"+ message;
+	                std::string klore = "`1   [2]"+ message;
+	                std::string loler = "`8   [3]"+ message;
+                        std::string jokuy = "`6   [4]"+ message;
+	                std::string klori = "`9   [5]"+ message;
+	                std::string lolir = "`4   [6]"+ message;
                         srand(time(NULL)); 
                         std::string Message2[6] = {jokey, klore, loler, jokuy, klori, lolir};
                         int Random2 = rand() % 6; 
                        // std::this_thread::sleep_for(std::chrono::milliseconds(1000));
-                        g_server->send(false, "action|input\n|text|/msg " + ply.name + Message2[Random2]);
+                        g_server->send(false, "action|input\n|text|/msg " + ply.name +     Message2[Random2]);
                     } catch (std::exception) { gt::send_log("Critical Error : Invalid String Position"); }
                 }
                 return true;
