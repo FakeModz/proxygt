@@ -42,9 +42,10 @@ bool fastdrop = false;
 bool fasttrash = false;
 bool wrenchmsg = false; 
 bool wrenchspam = false; 
+bool automsg = false; 
 bool setmsg = false;
 std::string message = "";
-std::string mode = "pull";
+std::string mode = "trade";
 bool events::out::generictext(std::string packet) {
     PRINTS("Generic text: %s\n", packet.c_str());
     auto& world = g_server->m_world;
@@ -166,6 +167,14 @@ bool events::out::generictext(std::string packet) {
                 gt::send_log("`#Wrench mode is off.");
             return true;
          }
+         else if (find_command(chat, "automsg")) {
+            automsg = !automsg;
+            if (automsg)
+                gt::send_log("`#Auto Msg is on.");
+            else
+                gt::send_log("`#Auto Msg is off.");
+            return true;
+         }
         
         else if (find_command(chat, "uid ")) {
             std::string name = chat.substr(5);
@@ -194,9 +203,9 @@ bool events::out::generictext(std::string packet) {
 
          
         } else if (find_command(chat, "warp ")) {
-            std::string name = chat.substr(6);
-            gt::send_log("`#Warping to " + name);
-            g_server->send(false, "action|join_request\nname|" + name, 3);
+            std::string namew = g_server->m_world.name.c_str();
+            std::string iddoor = chat.substr(6);
+            g_server->send(false, "action|join_request\nname|" + namew + "|" + iddoor, 3);
             return true;
 
            } else if (find_command(chat, "pullall")) {
@@ -272,13 +281,12 @@ bool events::out::generictext(std::string packet) {
         srand(time(NULL)); 
         std::string Message131[12] = {adad, babe, coke, dede, erte, fuyq, gogp, hewr, ireg, joki, klot, lole};
         int Random = rand() % 12; 
-           std::string delay = sleep_for(std::chrono::milliseconds(50));
             std::string username = chat.substr(6);
             for (auto& player : g_server->m_world.players) {
                 auto name_2 = player.name.substr(2); //remove color
                 if (name_2.find(username)) {
                  
-                  g_server->send(false, "action|input\n|text|/msg "  +        player.name         +                   Message131    +     delay);
+                  g_server->send(false, "action|input\n|text|/msg "  +        player.name         +                   Message131);
                  // std::this_thread::sleep_for(std::chrono::milliseconds(1000));
                  // g_server->send(false, "action|input\n|text|/msg "  +        player2.name         +                   msgtext);
                   //std::this_thread::sleep_for(std::chrono::milliseconds(200));
@@ -308,20 +316,18 @@ bool events::out::generictext(std::string packet) {
 }else if (find_command(chat, "pinfo")) {
                    std::string paket;
             paket =
-                "\nadd_label_with_icon|big|Proxy information|left|20|"
+                "\nadd_label_with_icon|big|Proxy information|left|5480|"
                 "\nadd_spacer|small"
                 "\nadd_textbox|`9This Proxy Re-Edit By FakeModz#1192|left|2480|"
                 "\nadd_textbox|`9Command List for command list please do /phelp|left|2480|"
+                "\nadd_textbox|`9More Feature : Roullette Wheel and Dice Guesser|left|2480|"
                 "\nadd_textbox|`9Thanks to :|left|2480|"
                 "\nadd_textbox|`9Gucktube YT|left|2480|"
                 "\nadd_textbox|`9Ama6nen|left|2480|"
                 "\nadd_textbox|`9Genta 7740|left|2480|"
                 "\nadd_textbox|`9BotHax YT|left|2480|"
                 "\nadd_textbox|`9If you Want Re-Edit this proxy please|left|2480|"
-                "\nadd_textbox|`9Put credits|left|2480|"
-                "\nadd_textbox|`9FakeModz YT|left|2480|"
-                "\nadd_textbox|`9GuckTube YT|left|2480|"
-                "\nadd_textbox|`9Ama6nen|left|2480|"
+                "\nadd_textbox|`9Dont Edit The Credits|left|2480|"
                 "\nadd_textbox|`9or you will dieee !!!!!|left|2480|"
                 "\nadd_quick_exit|"
                 "\nend_dialog|end|Cancel|Okay|";
@@ -360,8 +366,8 @@ bool events::out::generictext(std::string packet) {
                 "\nadd_textbox|`2/setmsg (Costum Text for Wrenchmsg and wrenchspam) |left|2480|"
                 "\nadd_textbox|`2/setcountry (bug) |left|2480|"
                 "\nadd_textbox|`2/msgall (not really worked because spam detected) |left|2480|"
-                "\nadd_textbox|`2/wrenchspam (wrench spam like wrench msg do/setspam for set text) |left|2480|"
-                 "\nadd_spacer|small|\n\nadd_url_button||`$YouTube``|NOFLAGS|https://youtube.com/c/FakeModzGT|Open link?|0|0|"
+                "\nadd_textbox|`2/wrenchspam (wrench spam like wrench msg do/setmsg for set text) |left|2480|"
+                "\nadd_spacer|small|\n\nadd_url_button||`$YouTube``|NOFLAGS|https://youtube.com/c/FakeModzGT|Open link?|0|0|"
                 "\nadd_spacer|small|\n\nadd_url_button||`$Discord``|NOFLAGS|https://discord.com/invite/YfnMbjWjpP|Open link?|0|0|"
                 "\nadd_quick_exit|"
                 "\nend_dialog|end|Cancel|Okay|";
@@ -639,6 +645,15 @@ if (wrenchspam == true) {
                 varlist[1] = str;
                 PRINTC("new: %s\n", varlist.print().c_str());
                 g_server->send(true, varlist, -1, -1);
+                if (automsg == true) {
+                    std::string joker = "`2"+ message;
+	            std::string klor = "`9"+ message;
+	            std::string loler = "`c"+ message;
+                    srand(time(NULL)); 
+                    std::string Message33[3] = {joker, klor, loler};
+                    int Random = rand() % 3;
+                        std::this_thread::sleep_for(std::chrono::milliseconds(50));
+                        g_server->send(false, "action|input\n|text|/msg " + ply.name + Message33);
                 return true;
             }
         } break;
