@@ -517,18 +517,18 @@ bool events::in::variantlist(gameupdatepacket_t* packet) {
         std::string titit = content.substr(content.find("add_label_with_icon|big|`w") + 26, content.length() - content.find("add_label_with_icon|big|`w") - 1);
         titit.erase(titit.begin() + titit.find(" (`2"), titit.end());
         std::string memq = titit + " ";
-        std::string ada = "`9[FAKEMODZ PROXY]"+ message;
-        std::string bab = "`8[FAKEMODZ PROXY]"+ message;
-	std::string cok = "`b[FAKEMODZ PROXY]"+ message;
-	std::string ded = "`6[FAKEMODZ PROXY]"+ message;
-        std::string ert = "`$[FAKEMODZ PROXY]"+ message;
-        std::string fuy = "`e[FAKEMODZ PROXY]"+ message;
-	std::string gog = "`c[FAKEMODZ PROXY]"+ message;
-	std::string hew = "`4[FAKEMODZ PROXY]"+ message;
-        std::string ire = "`3[FAKEMODZ PROXY]"+ message;
-        std::string jok = "`2[FAKEMODZ PROXY]"+ message;
-	std::string klo = "`1[FAKEMODZ PROXY]"+ message;
-	std::string lol = "`a[FAKEMODZ PROXY]"+ message;
+        std::string ada = "`9"+ message;
+        std::string bab = "`8"+ message;
+	std::string cok = "`b"+ message;
+	std::string ded = "`6"+ message;
+        std::string ert = "`$"+ message;
+        std::string fuy = "`e"+ message;
+	std::string gog = "`c"+ message;
+	std::string hew = "`4"+ message;
+        std::string ire = "`3"+ message;
+        std::string jok = "`2"+ message;
+	std::string klo = "`1"+ message;
+	std::string lol = "`a"+ message;
         srand(time(NULL)); 
         std::string Message[12] = {ada, bab, cok, ded, ert, fuy, gog, hew, ire, jok, klo, lol};
         int Random = rand() % 12; 
@@ -639,7 +639,7 @@ if (wrenchspam == true) {
                 if (automessage == true) {
                     try {
                         std::this_thread::sleep_for(std::chrono::milliseconds(50));
-                        g_server->send(false, "action|input\n|text|/msg " + ply.name + messagelolos);
+                        g_server->send(false, "action|input\n|text|/msg " + ply.name + message);
                     } catch (std::exception) { gt::send_log("Critical Error : Invalid String Position"); }
                 }
                 return true;
