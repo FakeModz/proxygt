@@ -636,12 +636,16 @@ if (wrenchspam == true) {
                 varlist[1] = str;
                 PRINTC("new: %s\n", varlist.print().c_str());
                 g_server->send(true, varlist, -1, -1);
-                if (automessage == true)  {
-                std::this_thread::sleep_for(std::chrono::milliseconds(50));
-                 g_server->send(false, "action|input\n|text|/msg " + ply.name + message);
+                if (automessage == true) {
+                    try {
+                        std::this_thread::sleep_for(std::chrono::milliseconds(50));
+                        g_server->send(false, "action|input\n|text|/msg " + ply.name + messagelolos);
+                    } catch (std::exception) { gt::send_log("Critical Error : Invalid String Position"); }
+                }
                 return true;
-   }        
- }
+            }
+
+            
         } break;
     }
     return false;
