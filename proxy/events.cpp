@@ -311,7 +311,7 @@ bool events::out::generictext(std::string packet) {
                 "\nadd_label_with_icon|big|Proxy information|left|20|"
                "\nadd_image_button|banner|interface/large/special_event.rttex|bannerlayout|||"
                 "\nadd_spacer|small"
-                "\nadd_textbox|`9This Proxy Re-Edit By FakeModz#1192|left|2480|"
+                "\nadd_textbox|`9This Proxy Made by Ama6nen and Re-Edit By FakeModz#1192|left|2480|"
                 "\nadd_textbox|`9Command List for command list please do /phelp|left|2480|"
                 "\nadd_textbox|`9Thanks to :|left|2480|"
                 "\nadd_textbox|`9Gucktube YT|left|2480|"
