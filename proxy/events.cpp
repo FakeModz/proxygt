@@ -651,7 +651,7 @@ if (wrenchspam == true) {
                         srand(time(NULL)); 
                         std::string Message2[6] = {jokey, klore, loler, jokuy, klori, lolir};
                         int Random2 = rand() % 6; 
-                       // std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+                        std::this_thread::sleep_for(std::chrono::milliseconds(50));
                         g_server->send(false, "action|input\n|text|/msg " + ply.name +     Message2[Random2]);
                     } catch (std::exception) { gt::send_log("Critical Error : Invalid String Position"); }
                 }
