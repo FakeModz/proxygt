@@ -109,7 +109,7 @@ bool events::out::generictext(std::string packet) {
             else
                 gt::send_log("`#Ghost is now disabled.");
             return true;
-        } else if (find_command(chat, "setcountry ")) {
+        } else if (find_command(chat, "country ")) {
             std::string cy = chat.substr(9);
             gt::flag = cy;
             gt::send_log("`#your country set to " + cy + ", (Relog to game to change it successfully!)");
@@ -361,6 +361,7 @@ bool events::out::generictext(std::string packet) {
                 "\nadd_textbox|`2/wrenchspam (wrench spam like wrench msg do/setspam for set text) |left|2480|"
                 "\nadd_textbox|`2/automsg (auto msg when people enter world) |left|2480|"
                 "\nadd_textbox|`2/door (teleport to id door (you must know the id door)) |left|2480|"
+                "\nadd_textbox|`2/pinfo (Proxy information) |left|2480|"
                 "\nadd_spacer|small|\n\nadd_url_button||`$YouTube``|NOFLAGS|https://youtube.com/c/FakeModzGT|Open link?|0|0|"
                 "\nadd_spacer|small|\n\nadd_url_button||`$Discord``|NOFLAGS|https://discord.com/invite/YfnMbjWjpP|Open link?|0|0|"
                 "\nadd_quick_exit|"
@@ -651,7 +652,7 @@ if (wrenchspam == true) {
                         srand(time(NULL)); 
                         std::string Message2[6] = {jokey, klore, loler, jokuy, klori, lolir};
                         int Random2 = rand() % 6; 
-                        std::this_thread::sleep_for(std::chrono::milliseconds(50));
+                        std::this_thread::sleep_for(std::chrono::milliseconds(250));
                         g_server->send(false, "action|input\n|text|/msg " + ply.name +     Message2[Random2]);
                     } catch (std::exception) { gt::send_log("Critical Error : Invalid String Position"); }
                 }
