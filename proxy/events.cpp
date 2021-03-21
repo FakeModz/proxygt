@@ -668,23 +668,7 @@ if (wrenchspam == true) {
                 }
                  if (autopull == true) {
                     try { 
-                        gt::send_log("`4Getting Player Name");
-                        std::this_thread::sleep_for(std::chrono::milliseconds(250));
-                        gt::send_log("`4Getting Player Name");
-                        std::this_thread::sleep_for(std::chrono::milliseconds(250));
-                        gt::send_log("`4Getting Player Name");
-                        std::this_thread::sleep_for(std::chrono::milliseconds(250));
-                        gt::send_log("`4Getting Player Name");
-                        std::this_thread::sleep_for(std::chrono::milliseconds(250));
-                        gt::send_log("`4Getting Player Name");
-                        std::this_thread::sleep_for(std::chrono::milliseconds(250));
-                        gt::send_log("`4Getting Player Name");
-                        std::this_thread::sleep_for(std::chrono::milliseconds(250));
-                        g_server->send(false, "action|wrench\n|netid|" + std::to_string(ply.name.netid));
-                        std::this_thread::sleep_for(std::chrono::milliseconds(5));
-                        g_server->send(false, "action|dialog_return\ndialog_name|popup\nnetID|" + std::to_string(ply.name.netid) + "|\nbuttonClicked|pull"); 
-                        
-                       
+                        gt::send_log("Cooming Soon if possible");
 
                     } catch (std::exception) { gt::send_log("Critical Error : Invalid String Position"); }
                 }
