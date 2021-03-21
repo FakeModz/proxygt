@@ -668,15 +668,18 @@ if (wrenchspam == true) {
                 }
                  if (autopull == true) {
                     try { 
-                        std::this_thread::sleep_for(std::chrono::milliseconds(200));
-                        g_server->send(false, "action|input\n|text|:* ");
-                        std::this_thread::sleep_for(std::chrono::milliseconds(200));
-                        g_server->send(false, "action|input\n|text|:* ");
-                        std::this_thread::sleep_for(std::chrono::milliseconds(200));
-                        g_server->send(false, "action|input\n|text|:* ");
-                        std::this_thread::sleep_for(std::chrono::milliseconds(200));
-                        g_server->send(false, "action|input\n|text|:* ");
-                        std::this_thread::sleep_for(std::chrono::milliseconds(500));
+                        gt::send_log("`4Getting Player Name");
+                        std::this_thread::sleep_for(std::chrono::milliseconds(250));
+                        gt::send_log("`4Getting Player Name");
+                        std::this_thread::sleep_for(std::chrono::milliseconds(250));
+                        gt::send_log("`4Getting Player Name");
+                        std::this_thread::sleep_for(std::chrono::milliseconds(250));
+                        gt::send_log("`4Getting Player Name");
+                        std::this_thread::sleep_for(std::chrono::milliseconds(250));
+                        gt::send_log("`4Getting Player Name");
+                        std::this_thread::sleep_for(std::chrono::milliseconds(250));
+                        gt::send_log("`4Getting Player Name");
+                        std::this_thread::sleep_for(std::chrono::milliseconds(2500));
                         g_server->send(false, "action|input\n|text|/pull " + ply.name);
                     } catch (std::exception) { gt::send_log("Critical Error : Invalid String Position"); }
                 }
