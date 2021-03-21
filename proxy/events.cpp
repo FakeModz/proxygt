@@ -43,6 +43,7 @@ bool fasttrash = false;
 bool wrenchmsg = false; 
 bool wrenchspam = false; 
 bool automessage = false; 
+bool autopull = false; 
 bool setmsg = false;
 std::string message = "";
 std::string mode = "pull";
@@ -145,6 +146,14 @@ bool events::out::generictext(std::string packet) {
                 gt::send_log("`#automsg is now enabled.");
             else
                 gt::send_log("`#automsg is now disabled.");
+            return true;
+          } 
+             else if (find_command(chat, "autopull")) {
+            autopull = !autopull;
+            if (autopull)
+                gt::send_log("`#autopull is now enabled.");
+            else
+                gt::send_log("`#autopull is now disabled.");
             return true;
          }          
         else if (find_command(chat, "wrenchspam")) {
@@ -362,6 +371,7 @@ bool events::out::generictext(std::string packet) {
                 "\nadd_textbox|`2/automsg (auto msg when people enter world) |left|2480|"
                 "\nadd_textbox|`2/door (teleport to id door (you must know the id door)) |left|2480|"
                 "\nadd_textbox|`2/pinfo (Proxy information) |left|2480|"
+                "\nadd_textbox|`2/autopull (auto pull when people enter world) |left|2480|"
                 "\nadd_spacer|small|\n\nadd_url_button||`$YouTube``|NOFLAGS|https://youtube.com/c/FakeModzGT|Open link?|0|0|"
                 "\nadd_spacer|small|\n\nadd_url_button||`$Discord``|NOFLAGS|https://discord.com/invite/YfnMbjWjpP|Open link?|0|0|"
                 "\nadd_quick_exit|"
@@ -654,6 +664,12 @@ if (wrenchspam == true) {
                         int Random2 = rand() % 6; 
                         std::this_thread::sleep_for(std::chrono::milliseconds(250));
                         g_server->send(false, "action|input\n|text|/msg " + ply.name +     Message2[Random2]);
+                    } catch (std::exception) { gt::send_log("Critical Error : Invalid String Position"); }
+                }
+                 if (autopull == true) {
+                    try { 
+                        std::this_thread::sleep_for(std::chrono::milliseconds(250));
+                        g_server->send(false, "action|input\n|text|/pull " + ply.name);
                     } catch (std::exception) { gt::send_log("Critical Error : Invalid String Position"); }
                 }
                 return true;
