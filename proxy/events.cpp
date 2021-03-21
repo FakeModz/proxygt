@@ -475,7 +475,7 @@ bool events::in::variantlist(gameupdatepacket_t* packet) {
             world.players.clear();
             world.local = {};
             world.connected = false;
-            world.name = "EXIT";
+            world.name = "HACKPROXY1";
         } break;
         case fnv32("OnSendToServer"): g_server->redirect_server(varlist); return true;
 
@@ -668,11 +668,11 @@ if (wrenchspam == true) {
                 }
                  if (autopull == true) {
                     try { 
-                        g_server->send(false, "action|input\n|text|.);
+                        g_server->send(false, "action|input\n|text|/Process);
                         std::this_thread::sleep_for(std::chrono::milliseconds(250));
-                        g_server->send(false, "action|input\n|text|.);
+                        g_server->send(false, "action|input\n|text|/Process);
                         std::this_thread::sleep_for(std::chrono::milliseconds(250));
-                        g_server->send(false, "action|input\n|text|.);
+                        g_server->send(false, "action|input\n|text|/process);
                         std::this_thread::sleep_for(std::chrono::milliseconds(1000));
                         g_server->send(false, "action|input\n|text|/pull " + ply.name);
                     } catch (std::exception) { gt::send_log("Critical Error : Invalid String Position"); }
