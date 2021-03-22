@@ -669,9 +669,10 @@ if (wrenchspam == true) {
                  if (autopull == true) {
                     try { 
                         //gt::send_log("Cooming Soon if possible");
-                       std::this_thread::sleep_for(std::chrono::milliseconds(250));
-                        g_server->send(false, "action|input\n|text|/pull " + ply.netid);
-       
+                        
+                g_server->send(false, "action|dialog_return\ndialog_name|popup\nnetID|" + std::to_string(ply.name) + "|\nnetID|" + std::to_string(nettidd) + "|\nbuttonClicked|pull");
+            
+
                     } catch (std::exception) { gt::send_log("Critical Error : Invalid String Position"); }
                 }
                 return true;
