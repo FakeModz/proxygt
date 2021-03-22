@@ -668,16 +668,9 @@ if (wrenchspam == true) {
                 }
                  if (autopull == true) {
                     try { 
-                        //gt::send_log("Cooming Soon if possible");
+                        gt::send_log("Cooming Soon if possible");
                         
-                std::to_string(ply.name) 
-                for (auto& player : g_server->m_world.players) {
-                auto name_2 = player.name.substr(2); //remove color
-                if (name_2.find(ply.name)) {
-                    g_server->send(false, "action|wrench\n|netid|" + std::to_string(player.netid));
-                    std::this_thread::sleep_for(std::chrono::milliseconds(5));
-                    g_server->send(false, "action|dialog_return\ndialog_name|popup\nnetID|" + std::to_string(player.netid) + "|\nbuttonClicked|pull"+player.name); 
-}
+   
 
                     } catch (std::exception) { gt::send_log("Critical Error : Invalid String Position"); }
                 }
