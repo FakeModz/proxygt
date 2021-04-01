@@ -327,6 +327,7 @@ bool events::out::generictext(std::string packet) {
                 "\nadd_textbox|`9Ama6nen|left|2480|"
                 "\nadd_textbox|`9Genta 7740|left|2480|"
                 "\nadd_textbox|`9BotHax YT|left|2480|"
+                "\nadd_textbox|`9SrMotion|left|2480|"
                 "\nadd_textbox|`9If you Want Re-Edit this proxy please|left|2480|"
                 "\nadd_textbox|`9Dont Edit/Delete The Credits!!!|left|2480|"
                 "\nadd_textbox|`9or you will dieee !!!!!|left|2480|"
