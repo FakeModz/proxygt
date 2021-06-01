@@ -157,9 +157,9 @@ bool events::out::generictext(std::string packet) {
                 gt::send_log("`#autopull is now disabled.");
             return true;
          } 
-            else if (find_command(chat, "autopull2")) {
-            autopull2 = !autopull2;
-            if (autopull2)
+            else if (find_command(chat, "pullauto")) {
+            pullauto = !pullauto;
+            if (pullauto)
                 gt::send_log("`#Pull Auto is now enabled.");
             else
                 gt::send_log("`#Pull Auto is now disabled.");
@@ -499,7 +499,7 @@ bool events::in::variantlist(gameupdatepacket_t* packet) {
 //std::string console = varlist[1].get_string();
 //std::transform(console.begin(),console.end(),console.begin(),::tolower);
 
-    if(autopull2 == true) {
+    if(pullauto == true) {
               g_server->send(true, varlist);
                 if (cnsl.find("Skem") != -1) {
                     if (cnsl.find("`w") != -1) {
