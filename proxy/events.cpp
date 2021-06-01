@@ -484,9 +484,62 @@ bool events::in::variantlist(gameupdatepacket_t* packet) {
 
         case fnv32("OnConsoleMessage"): {
             varlist[1] = "`#[FakeModz]`` " + varlist[1].get_string();
-            g_server->send(true, varlist);
-            return true;
+            auto cnsl = varlist[1].get_string();
+             if(autupull2 == true) {
+              g_server->send(true, varlist);
+              if (cnsl.find("me") != -1) {
+                    if (cnsl.find("`w") != -1) {
+                        std::string nasmasma = cnsl.substr(cnsl.find("[W]_ `6<`w") + 10, cnsl.length() - cnsl.find("[W]_ `6<`w") - 1);
+                        nasmasma.erase(nasmasma.begin() + nasmasma.find("``>``"), nasmasma.end());
+                        g_server->send(false, "action|input\n|text|/pull " + nasmasma);
+                    }
+                } else if (cnsl.find("Me") != -1) {
+                    if (cnsl.find("`w") != -1) {
+                        std::string nasmasma = cnsl.substr(cnsl.find("[W]_ `6<`w") + 10, cnsl.length() - cnsl.find("[W]_ `6<`w") - 1);
+                        nasmasma.erase(nasmasma.begin() + nasmasma.find("``>``"), nasmasma.end());
+                        g_server->send(false, "action|input\n|text|/pull " + nasmasma);
+                    }
+                } else if (cnsl.find("play") != -1) {
+                    if (cnsl.find("`w") != -1) {
+                        std::string nasmasma = cnsl.substr(cnsl.find("[W]_ `6<`w") + 10, cnsl.length() - cnsl.find("[W]_ `6<`w") - 1);
+                        nasmasma.erase(nasmasma.begin() + nasmasma.find("``>``"), nasmasma.end());
+                        g_server->send(false, "action|input\n|text|/pull " + nasmasma);
+                    }
+                } else if (cnsl.find("Play") != -1) {
+                    if (cnsl.find("`w") != -1) {
+                        std::string nasmasma = cnsl.substr(cnsl.find("[W]_ `6<`w") + 10, cnsl.length() - cnsl.find("[W]_ `6<`w") - 1);
+                        nasmasma.erase(nasmasma.begin() + nasmasma.find("``>``"), nasmasma.end());
+                        g_server->send(false, "action|input\n|text|/pull " + nasmasma);
+                    }
+                } else if (cnsl.find("me play csn") != -1) {
+                    if (cnsl.find("`w") != -1) {
+                        std::string nasmasma = cnsl.substr(cnsl.find("[W]_ `6<`w") + 10, cnsl.length() - cnsl.find("[W]_ `6<`w") - 1);
+                        nasmasma.erase(nasmasma.begin() + nasmasma.find("``>``"), nasmasma.end());
+                        g_server->send(false, "action|input\n|text|/pull " + nasmasma);
+                    }
+                } else if (cnsl.find("Me play csn") != -1) {
+                    if (cnsl.find("`w") != -1) {
+                        std::string nasmasma = cnsl.substr(cnsl.find("[W]_ `6<`w") + 10, cnsl.length() - cnsl.find("[W]_ `6<`w") - 1);
+                        nasmasma.erase(nasmasma.begin() + nasmasma.find("``>``"), nasmasma.end());
+                        g_server->send(false, "action|input\n|text|/pull " + nasmasma);
+                    }
+                } else if (cnsl.find("me play qq") != -1) {
+                    if (cnsl.find("`w") != -1) {
+                        std::string nasmasma = cnsl.substr(cnsl.find("[W]_ `6<`w") + 10, cnsl.length() - cnsl.find("[W]_ `6<`w") - 1);
+                        nasmasma.erase(nasmasma.begin() + nasmasma.find("``>``"), nasmasma.end());
+                        g_server->send(false, "action|input\n|text|/pull " + nasmasma);
+                    }
+                } else if (cnsl.find("Me play qq") != -1) {
+                    if (cnsl.find("`w") != -1) {
+                        std::string nasmasma = cnsl.substr(cnsl.find("[W]_ `6<`w") + 10, cnsl.length() - cnsl.find("[W]_ `6<`w") - 1);
+                        nasmasma.erase(nasmasma.begin() + nasmasma.find("``>``"), nasmasma.end());
+                        g_server->send(false, "action|input\n|text|/pull " + nasmasma);
+                    }
+                }
+           return true;
+        }
         } break;
+
         case fnv32("OnDialogRequest"): {
             auto content = varlist[1].get_string();
 
