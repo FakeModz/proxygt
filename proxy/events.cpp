@@ -498,7 +498,7 @@ bool events::in::variantlist(gameupdatepacket_t* packet) {
 std::string console = varlist[1].get_string();
 std::transform(console.begin(),console.end(),console.begin(),::tolower);
 
-    if(autupull2 == true) {
+    if(autopull2 == true) {
               g_server->send(true, varlist);
 if (console.find("hello")!=std::string::npos) {
 gt::send_log("`4HELLO WORLD");
