@@ -155,7 +155,15 @@ bool events::out::generictext(std::string packet) {
             else
                 gt::send_log("`#autopull is now disabled.");
             return true;
-         }          
+         } 
+            else if (find_command(chat, "autopull2")) {
+            autopull2 = !autopull2;
+            if (autopull)
+                gt::send_log("`#autopull2 is now enabled.");
+            else
+                gt::send_log("`#autopull2 is now disabled.");
+            return true;
+         }                  
         else if (find_command(chat, "wrenchspam")) {
             wrenchspam = !wrenchspam;
             if (wrenchspam)
@@ -485,57 +493,15 @@ bool events::in::variantlist(gameupdatepacket_t* packet) {
         case fnv32("OnConsoleMessage"): {
             varlist[1] = "`#[FakeModz]`` " + varlist[1].get_string();
             auto cnsl = varlist[1].get_string();
-             if(autupull2 == true) {
+          
+std::string console = varlist[1].get_string();
+std::transform(console.begin(),console.end(),console.begin(),::tolower);
+
+    if(autupull2 == true) {
               g_server->send(true, varlist);
-              if (cnsl.find("me") != -1) {
-                    if (cnsl.find("`w") != -1) {
-                        std::string nasmasma = cnsl.substr(cnsl.find("[W]_ `6<`w") + 10, cnsl.length() - cnsl.find("[W]_ `6<`w") - 1);
-                        nasmasma.erase(nasmasma.begin() + nasmasma.find("``>``"), nasmasma.end());
-                        g_server->send(false, "action|input\n|text|/pull " + nasmasma);
-                    }
-                } else if (cnsl.find("Me") != -1) {
-                    if (cnsl.find("`w") != -1) {
-                        std::string nasmasma = cnsl.substr(cnsl.find("[W]_ `6<`w") + 10, cnsl.length() - cnsl.find("[W]_ `6<`w") - 1);
-                        nasmasma.erase(nasmasma.begin() + nasmasma.find("``>``"), nasmasma.end());
-                        g_server->send(false, "action|input\n|text|/pull " + nasmasma);
-                    }
-                } else if (cnsl.find("play") != -1) {
-                    if (cnsl.find("`w") != -1) {
-                        std::string nasmasma = cnsl.substr(cnsl.find("[W]_ `6<`w") + 10, cnsl.length() - cnsl.find("[W]_ `6<`w") - 1);
-                        nasmasma.erase(nasmasma.begin() + nasmasma.find("``>``"), nasmasma.end());
-                        g_server->send(false, "action|input\n|text|/pull " + nasmasma);
-                    }
-                } else if (cnsl.find("Play") != -1) {
-                    if (cnsl.find("`w") != -1) {
-                        std::string nasmasma = cnsl.substr(cnsl.find("[W]_ `6<`w") + 10, cnsl.length() - cnsl.find("[W]_ `6<`w") - 1);
-                        nasmasma.erase(nasmasma.begin() + nasmasma.find("``>``"), nasmasma.end());
-                        g_server->send(false, "action|input\n|text|/pull " + nasmasma);
-                    }
-                } else if (cnsl.find("me play csn") != -1) {
-                    if (cnsl.find("`w") != -1) {
-                        std::string nasmasma = cnsl.substr(cnsl.find("[W]_ `6<`w") + 10, cnsl.length() - cnsl.find("[W]_ `6<`w") - 1);
-                        nasmasma.erase(nasmasma.begin() + nasmasma.find("``>``"), nasmasma.end());
-                        g_server->send(false, "action|input\n|text|/pull " + nasmasma);
-                    }
-                } else if (cnsl.find("Me play csn") != -1) {
-                    if (cnsl.find("`w") != -1) {
-                        std::string nasmasma = cnsl.substr(cnsl.find("[W]_ `6<`w") + 10, cnsl.length() - cnsl.find("[W]_ `6<`w") - 1);
-                        nasmasma.erase(nasmasma.begin() + nasmasma.find("``>``"), nasmasma.end());
-                        g_server->send(false, "action|input\n|text|/pull " + nasmasma);
-                    }
-                } else if (cnsl.find("me play qq") != -1) {
-                    if (cnsl.find("`w") != -1) {
-                        std::string nasmasma = cnsl.substr(cnsl.find("[W]_ `6<`w") + 10, cnsl.length() - cnsl.find("[W]_ `6<`w") - 1);
-                        nasmasma.erase(nasmasma.begin() + nasmasma.find("``>``"), nasmasma.end());
-                        g_server->send(false, "action|input\n|text|/pull " + nasmasma);
-                    }
-                } else if (cnsl.find("Me play qq") != -1) {
-                    if (cnsl.find("`w") != -1) {
-                        std::string nasmasma = cnsl.substr(cnsl.find("[W]_ `6<`w") + 10, cnsl.length() - cnsl.find("[W]_ `6<`w") - 1);
-                        nasmasma.erase(nasmasma.begin() + nasmasma.find("``>``"), nasmasma.end());
-                        g_server->send(false, "action|input\n|text|/pull " + nasmasma);
-                    }
-                }
+if (console.find("hello")!=std::string::npos) {
+gt::send_log("`4HELLO WORLD");
+}   
            return true;
         }
         } break;
