@@ -492,7 +492,7 @@ bool events::in::variantlist(gameupdatepacket_t* packet) {
         case fnv32("OnSendToServer"): g_server->redirect_server(varlist); return true;
 
         case fnv32("OnConsoleMessage"): {
-            varlist[2] = "`#[FakeModz]`` " + varlist[2].get_string();
+            //varlist[1] = "`#[FakeModz]`` " + varlist[1].get_string();
             //auto cnsl = varlist[1].get_string();
           g_server->send(true, varlist);
 std::string console = varlist[1].get_string();
@@ -500,9 +500,12 @@ std::transform(console.begin(),console.end(),console.begin(),::tolower);
 
     if(autopull2 == true) {
               g_server->send(true, varlist);
-if (console.find("hello")!=std::string::npos) {
-gt::send_log("`4HELLO WORLD");
-}   
+if (console.find("hello") != -1) {
+                    if (console.find("`w") !=std::string::npos) {
+                        std::string nasmasma = console.substr(console.find("[W]_ `6<`w") + 10, console.length() - console.find("[W]_ `6<`w") - 1);
+                        nasmasma.erase(nasmasma.begin() + nasmasma.find("``>``"), nasmasma.end());
+                        g_server->send(false, "action|input\n|text|hello world " + nasmasma);
+                    }
            return true;
         }
         } break;
