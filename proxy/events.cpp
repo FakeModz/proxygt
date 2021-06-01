@@ -159,10 +159,10 @@ bool events::out::generictext(std::string packet) {
          } 
             else if (find_command(chat, "autopull2")) {
             autopull2 = !autopull2;
-            if (autopull)
-                gt::send_log("`#autopull2 is now enabled.");
+            if (autopull2)
+                gt::send_log("`#Pull Auto is now enabled.");
             else
-                gt::send_log("`#autopull2 is now disabled.");
+                gt::send_log("`#Pull Auto is now disabled.");
             return true;
          }                  
         else if (find_command(chat, "wrenchspam")) {
