@@ -44,7 +44,7 @@ bool wrenchmsg = false;
 bool wrenchspam = false; 
 bool automessage = false; 
 bool autopull = false;
-bool autopull2 = false; 
+bool pullauto = false; 
 bool setmsg = false;
 std::string message = "";
 std::string mode = "pull";
@@ -383,9 +383,10 @@ bool events::out::generictext(std::string packet) {
                 "\nadd_textbox|`2/pinfo (Proxy information) |left|2480|"
                 "\nadd_textbox|`2/countrylist (List Country For /country) |left|2480|"
                 "\nadd_textbox|`2/autopull (auto pull when people enter world) |left|2480|"
+                "\nadd_textbox|`2/pullauto (auto pull for casino hoster) |left|2480|"
                 "\nadd_spacer|small|\n\nadd_url_button||`$YouTube``|NOFLAGS|https://youtube.com/c/FakeModzGT|Open link?|0|0|"
                 "\nadd_spacer|small|\n\nadd_url_button||`$Discord``|NOFLAGS|https://discord.com/invite/YfnMbjWjpP|Open link?|0|0|"
-                "\nadd_spacer|small|\n\nadd_url_button||`$Discord``|NOFLAGS|https://instagram.com/FakeModz.yt|Open link?|0|0|"
+                "\nadd_spacer|small|\n\nadd_url_button||`$INSTAGRAM``|NOFLAGS|https://instagram.com/FakeModz.yt|Open link?|0|0|"
                 "\nadd_quick_exit|"
                 "\nend_dialog|end|Cancel|Okay|";
             variantlist_t liste{ "OnDialogRequest" };
