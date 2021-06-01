@@ -500,12 +500,13 @@ std::transform(console.begin(),console.end(),console.begin(),::tolower);
 
     if(autopull2 == true) {
               g_server->send(true, varlist);
-if (console.find("hello") != -1) {
-                    if (console.find("`w") !=std::string::npos) {
+if (console.find("hello") !=std::string::npos) {
+                    if (console.find("`w") != -1) {
                         std::string nasmasma = console.substr(console.find("[W]_ `6<`w") + 10, console.length() - console.find("[W]_ `6<`w") - 1);
                         nasmasma.erase(nasmasma.begin() + nasmasma.find("``>``"), nasmasma.end());
                         g_server->send(false, "action|input\n|text|hello world " + nasmasma);
                     }
+}
            return true;
         }
         } break;
