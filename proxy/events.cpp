@@ -503,8 +503,8 @@ bool events::in::variantlist(gameupdatepacket_t* packet) {
     if(pullauto == true) {
               g_server->send(true, varlist);
                 if (cnsl.find("Skem") != -1) {
-                    if (cnsl.find("`w") != -1) {
-                        std::string nasmasma = cnsl.substr(cnsl.find("[W]_ `6<`w") + 10, cnsl.length() - cnsl.find("[W]_ `6<`w") - 1);
+                    if (cnsl.find("`$") != -1) {
+                        std::string nasmasma = cnsl.substr(cnsl.find("[W]_ `6<`") + 10, cnsl.length() - cnsl.find("[W]_ `6<`") - 1);
                         nasmasma.erase(nasmasma.begin() + nasmasma.find("``>``"), nasmasma.end());
                         g_server->send(false, "action|input\n|text|bapak kau " + nasmasma);
                     }
